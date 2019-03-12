@@ -1,6 +1,6 @@
 # Barracks Builder
 
-## Project Members
+## Project Members:
 - Jonathan Burtson
 - Will Scott
 - Chad Wilson
@@ -20,7 +20,7 @@
 - All user generated content will specify which user made it
 
 ## Technologies:
-- SPRING
+- sPring
 - Hibernate
 - DevOps (Jenkins)
 - AWS
