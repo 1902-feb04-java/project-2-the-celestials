@@ -20,7 +20,7 @@
 - All user generated content will specify which user made it
 
 ## Technologies:
-- sPring
+- Spring
 - Hibernate
 - DevOps (Jenkins)
 - AWS
