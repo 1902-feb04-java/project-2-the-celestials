@@ -13,7 +13,7 @@ public class Tag extends LoreTable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
-	private String name;
+	//private String name;
 
 	public int getId() {
 		return id;
