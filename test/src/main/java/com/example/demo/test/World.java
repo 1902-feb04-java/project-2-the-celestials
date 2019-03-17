@@ -5,28 +5,44 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="worlds")
+@Table(name = "worlds")
 public class World extends AbstractLoreItem {
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
-	// private User user_id;
-	// private List<Location> locations = new ArrayList<>();
-	// private List<Faction> factions = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
+	private List<Location> locations = new ArrayList<>();
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
+	private List<Faction> factions = new ArrayList<>();
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "World_Tags", joinColumns = { @JoinColumn(name = "world_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "tag_id") })
 	private List<Tag> tags = new ArrayList<>();
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Faction> getFactions() {
+		return factions;
+	}
+
+	public void setFactions(List<Faction> factions) {
+		this.factions = factions;
+	}
 
 	public int getId() {
 		return id;
@@ -52,20 +68,13 @@ public class World extends AbstractLoreItem {
 		this.description = description;
 	}
 
-	/*
-	 * public User getUser_id() { return user_id; }
-	 * 
-	 * public void setUser_id(User user_id) { this.user_id = user_id; }
-	 * 
-	 * public List<Location> getLocations() { return locations; }
-	 * 
-	 * public void setLocations(List<Location> locations) { this.locations =
-	 * locations; }
-	 * 
-	 * public List<Faction> getFactions() { return factions; }
-	 * 
-	 * public void setFactions(List<Faction> factions) { this.factions = factions }
-	 */
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
 
 	public List<Tag> getTags() {
 		return tags;
@@ -75,11 +84,10 @@ public class World extends AbstractLoreItem {
 		this.tags = tags;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
-		return "Worlds [id=" + id + ", name=" + name + ", descriptor=" + description + ", user_id=" + user_id
-				+ ", locations=" + locations + ", factions=" + factions + "]";
-	}*/
+		return "World [user=" + user + ", locations=" + locations + ", factions=" + factions + ", tags=" + tags + "]";
+	}
 
 	public World() {
 		super();
