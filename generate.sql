@@ -6,6 +6,8 @@
 -- DROP TABLE defenses CASCADE;
 -- DROP TABLE faction_tags CASCADE;
 -- DROP TABLE factions CASCADE;
+-- DROP TABLE faction_weapons;
+-- DROP TABLE faction_defenses;
 -- DROP TABLE location_tags CASCADE;
 -- DROP TABLE locations CASCADE;
 -- DROP TABLE ranges CASCADE;
