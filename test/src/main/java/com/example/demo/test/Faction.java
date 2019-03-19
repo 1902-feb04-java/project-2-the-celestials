@@ -23,9 +23,13 @@ public class Faction extends AbstractLoreItem {
 	@ManyToOne
 	@JoinColumn(name = "world_id", nullable = false)
 	private World world;
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "faction")
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "Faction_Weapons", joinColumns = { @JoinColumn(name = "faction_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "weapon_id") })
 	private List<Weapon> weapons = new ArrayList<>();
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "faction")
+	@ManyToMany(cascade = { CascadeType.ALL })
+	@JoinTable(name = "Faction_Defenses", joinColumns = { @JoinColumn(name = "faction_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "defense_id") })
 	private List<Defense> defenses = new ArrayList<>();
 
 	public String getName() {
