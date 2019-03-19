@@ -83,3 +83,15 @@ VALUES
 (1,1),
 (2,2);
 
+INSERT INTO defenses (name, description, faction_id, bodyslot_id)
+VALUES
+('Body armor','chest plate',1,2),
+('light saber','redirect blaster bullets',2,3);
+
+INSERT INTO defense_tags (defense_id, tag_id)
+VALUES
+(1,1),
+(2,2);
+
+
+
