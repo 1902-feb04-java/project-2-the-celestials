@@ -2,15 +2,18 @@ package com.example.demo.test;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="tags")
 public class Tag extends LoreTable {
 
+	public Tag(int id, String name) {
+		super();
+		this.id=id;
+		this.name=name;
+	}
+	
 	public int getId() {
 		return id;
 	}
