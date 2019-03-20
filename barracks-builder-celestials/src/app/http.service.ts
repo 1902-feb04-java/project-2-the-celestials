@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { World } from '../world';
-
+import {Weapon} from '../weapon';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,6 +37,13 @@ export class HttpService {
       catchError(this.handleError<World>(`getHero id=${id}`))
     );
   }
+  getWeapons(): Observable<Weapon[]>{
+    return this.httpClient.get<Weapon[]>("http://localhost:8080/build/weapons")
+    .pipe(
+      tap(_ => this.log('fetched weapons')),
+      catchError(this.handleError<Weapon[]>('getWeapons', []))
+    );
+  } 
 
   /**
    * Handle Http operation that failed.
