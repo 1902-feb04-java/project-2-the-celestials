@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -23,16 +24,8 @@ public class User{
 	protected int id;	
 	private String username;
 	private String password;
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy="user")
-	private List<World> user_worlds = new ArrayList<>();
-	
-	public List<World> getUser_worlds() {
-		return user_worlds;
-	}
-
-	public void setUser_worlds(List<World> user_worlds) {
-		this.user_worlds = user_worlds;
-	}
+//	@OneToMany(cascade = { CascadeType.ALL }, mappedBy="user")
+//	private List<World> user_worlds = new ArrayList<>();
 
 	public int getId() {
 		return id;
