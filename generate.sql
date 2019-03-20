@@ -59,3 +59,41 @@ VALUES
 ('Reach'),
 ('Near'),
 ('Far');
+
+INSERT INTO factions (name, description, population, world_id)
+VALUES
+('Human','fleshy, bag of meat and organs',300000000,1),
+('Jedi','multi-race, collection of force weilders',2000,2);
+
+INSERT INTO faction_tags (faction_id, tag_id)
+VALUES
+(1,1),
+(2,2);
+
+INSERT INTO locations (name, description, world_id)
+VALUES
+('Dragon Stone','How of the mother of Dragons',1),
+('Death Star','Powerful weapon/planet',2);
+
+INSERT INTO weapons (name, description, faction_id, range_id)
+VALUES
+('Dragon glass','Used to kill white walkers',1,1),
+('Blaster','automatic projectile',2,4);
+
+INSERT INTO weapons_tags (weapon_id, tag_id)
+VALUES
+(1,1),
+(2,2);
+
+INSERT INTO defenses (name, description, faction_id, bodyslot_id)
+VALUES
+('Body armor','chest plate',1,2),
+('light saber','redirect blaster bullets',2,3);
+
+INSERT INTO defense_tags (defense_id, tag_id)
+VALUES
+(1,1),
+(2,2);
+
+
+

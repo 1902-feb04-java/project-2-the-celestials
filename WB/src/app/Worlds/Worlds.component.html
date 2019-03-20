@@ -1,0 +1,39 @@
+<!-- <div *ngIf="selectedWorld">
+<h2>{{world.name}}</h2>
+<p>Details:</p>
+<div><span>id: </span>{{selectedWorld.id}}</div>
+<div><span>name: </span>{{world.name}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedWorld.name" placeholder="name"/>
+  </label>
+</div> -->
+
+<!-- <h2>Worlds(id & name)</h2>
+<ul class="worlds">
+  <li *ngFor="let world of worlds" (click)="onSelect(world)">
+    <span class="badge">{{world.id}}</span> {{world.name}}
+  </li>
+</ul> -->
+<!-- <div> -->
+<h2>Worlds</h2>
+<ul class="Worlds">
+  <li *ngFor="let world of Worlds"
+    [class.selected]="world === selectedWorld"
+    (click)="onSelect(world)">
+    <span class="badge">{{world.id}}</span> {{world.name}}
+  </li>
+</ul>
+<app-world-detail [world]="selectedWorld"></app-world-detail>
+<!-- <div *ngIf="selectedWorld">
+ 
+  <h2>{{selectedWorld.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedWorld.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedWorld.name" placeholder="name"/>
+    </label>
+  </div>
+ 
+</div> -->
+<!-- </div> -->
