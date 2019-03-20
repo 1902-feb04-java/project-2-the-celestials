@@ -12,4 +12,11 @@ export class WorldComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * World
+   */
+  public World() {
+    window.location.href = "world"
+  }
+
 }
