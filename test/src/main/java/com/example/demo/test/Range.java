@@ -7,8 +7,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ranges")
 public class Range extends LoreTable {
-	@OneToOne(mappedBy = "range")
-	private Weapon weapon;
+	//@OneToOne(mappedBy = "range")
+	//private Weapon weapon;
 
 	public void setName(String name) {
 		this.name = name;
@@ -26,13 +26,13 @@ public class Range extends LoreTable {
 		return this.id;
 	}
 
-	public Weapon getWeapon() {
-		return weapon;
-	}
-
-	public void setWeapon(Weapon weapon) {
-		this.weapon = weapon;
-	}
+//	public Weapon getWeapon() {
+//		return weapon;
+//	}
+//
+//	public void setWeapon(Weapon weapon) {
+//		this.weapon = weapon;
+//	}
 
 	public Range() {
 		super();
@@ -41,7 +41,7 @@ public class Range extends LoreTable {
 
 	@Override
 	public String toString() {
-		return "Range [weapon=" + weapon + ", id=" + id + ", name=" + name + "]";
+		return "Range [id=" + id + ", name=" + name + "]";
 	}
 
 }

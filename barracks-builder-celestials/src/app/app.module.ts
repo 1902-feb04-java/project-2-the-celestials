@@ -9,19 +9,25 @@ import { WorldComponent } from './world/world.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UiModule } from './ui/ui.module';
+import { WorldsTableComponent } from './worlds-table/worlds-table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     WorldComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WorldsTableComponent
   ],
   imports: [
     BrowserModule,
     UiModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

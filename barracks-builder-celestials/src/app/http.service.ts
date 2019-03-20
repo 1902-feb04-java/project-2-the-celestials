@@ -21,7 +21,7 @@ export class HttpService {
   }
 
   /** GET worlds from the server */
-  getHeroes(): Observable<World[]> {
+  getWorlds(): Observable<World[]> {
     return this.httpClient.get<World[]>(this.worldsUrl)
       .pipe(
         tap(_ => this.log('fetched worlds')),
