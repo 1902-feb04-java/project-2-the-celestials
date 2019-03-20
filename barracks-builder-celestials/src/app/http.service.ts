@@ -16,7 +16,7 @@ export class HttpService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    alert(`HttpService: ${message}`);
+    // alert(`HttpService: ${message}`);
     //this.messageService.add(`HeroService: ${message}`);
   }
 
@@ -35,6 +35,15 @@ export class HttpService {
     return this.httpClient.get<World>(url).pipe(
       tap(_ => this.log(`fetched world id=${id}`)),
       catchError(this.handleError<World>(`getHero id=${id}`))
+    );
+  }
+
+  /** GET world from the server by Id */
+  getWorldFactionsById(id: number): Observable<any[]> {
+    const url = `http://localhost:8080/build/worldfactions/${id}`;
+    return this.httpClient.get<any[]>(url).pipe(
+      tap(_ => this.log(`fetched world id=${id}`)),
+      catchError(this.handleError<any[]>(`getHero id=${id}`))
     );
   }
 
