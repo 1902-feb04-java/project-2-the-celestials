@@ -18,10 +18,10 @@ public class World extends AbstractLoreItem {
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
-	private List<Location> locations = new ArrayList<>();
-	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
-	private List<Faction> factions = new ArrayList<>();
+	//@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
+	//private List<Location> locations = new ArrayList<>();
+	//@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "world")
+	//private List<Faction> factions = new ArrayList<>();
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "World_Tags", joinColumns = { @JoinColumn(name = "world_id") }, inverseJoinColumns = {
@@ -36,13 +36,13 @@ public class World extends AbstractLoreItem {
 		this.user = user;
 	}
 
-	public List<Faction> getFactions() {
-		return factions;
-	}
+//	public List<Faction> getFactions() {
+//		return factions;
+//	}
 
-	public void setFactions(List<Faction> factions) {
-		this.factions = factions;
-	}
+//	public void setFactions(List<Faction> factions) {
+//		this.factions = factions;
+//	}
 
 	public int getId() {
 		return id;
@@ -68,13 +68,13 @@ public class World extends AbstractLoreItem {
 		this.description = description;
 	}
 
-	public List<Location> getLocations() {
-		return locations;
-	}
-
-	public void setLocations(List<Location> locations) {
-		this.locations = locations;
-	}
+//	public List<Location> getLocations() {
+//		return locations;
+//	}
+//
+//	public void setLocations(List<Location> locations) {
+//		this.locations = locations;
+//	}
 
 	public List<Tag> getTags() {
 		return tags;
@@ -86,7 +86,7 @@ public class World extends AbstractLoreItem {
 
 	@Override
 	public String toString() {
-		return "World [user=" + user + ", locations=" + locations + ", factions=" + factions + ", tags=" + tags + "]";
+		return "World [name=" + name + ", description=" + description + ", tags=" + tags + "]";
 	}
 
 	public World() {
