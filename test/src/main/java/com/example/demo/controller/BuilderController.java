@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.test.Tag;
 import com.example.demo.test.TagRepo;
+import com.example.demo.test.Weapon;
+import com.example.demo.test.WeaponRepo;
 import com.example.demo.test.World;
 import com.example.demo.test.WorldRepo;
 
@@ -23,6 +25,8 @@ public class BuilderController {
 	TagRepo tr;
 	@Autowired
 	WorldRepo wr;
+	@Autowired
+	WeaponRepo weaponrepo;
 
 	@GetMapping("/echo")
 	public String echo(@RequestParam("tagName") String str){
@@ -52,6 +56,11 @@ public class BuilderController {
 	@GetMapping("/worlds")
 	public Iterable<World> getWorlds() {
 		return wr.findAll();
+	}
+	
+	@GetMapping("/weapons")
+	public Iterable<Weapon> getWeapons(){
+		return weaponrepo.findAll();
 	}
 
 }
