@@ -24,4 +24,11 @@ export class WorldComponent implements OnInit {
      .subscribe(world => this.world = world);
   }
 
+  /**
+   * World
+   */
+  public World() {
+    window.location.href = "world"
+  }
+
 }
