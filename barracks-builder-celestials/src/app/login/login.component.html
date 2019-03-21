@@ -8,7 +8,11 @@
     <input type="submit">
   </form>
   <div *ngIf="submitted">
-    <h1 *ngIf="user; else notValid">Hello, {{user.username}}</h1>
-    <ng-template #notValid><h1>Sorry, your username and/or password is incorrect</h1></ng-template>
+    <div *ngIf="user; else notValid">
+      <h1>{{setUserInSessionStorage(user.id)}} Hello, {{user.username}}</h1>
+    </div>
+    <ng-template #notValid>
+      <h1>Sorry, your username and/or password is incorrect</h1>
+    </ng-template>
   </div>
 </div>
