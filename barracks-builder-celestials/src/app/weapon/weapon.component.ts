@@ -10,7 +10,7 @@ import { Weapon} from '../../weapon';
 })
 export class WeaponComponent implements OnInit {
   @Input() weapons : Weapon[];
-
+  columnsToDisplay = ['name','description','range'];
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
