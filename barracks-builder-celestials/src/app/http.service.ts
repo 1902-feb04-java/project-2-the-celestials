@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { World } from '../world';
+import { Faction } from  '../faction'
+import { Location } from '../location';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class HttpService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    alert(`HttpService: ${message}`);
+    //alert(`HttpService: ${message}`);
     //this.messageService.add(`HeroService: ${message}`);
   }
 
@@ -35,6 +38,30 @@ export class HttpService {
     return this.httpClient.get<World>(url).pipe(
       tap(_ => this.log(`fetched world id=${id}`)),
       catchError(this.handleError<World>(`getHero id=${id}`))
+    );
+  }
+
+  getWorldFactionsById(id: number): Observable<Faction[]> {
+    const url = `http://localhost:8080/build/worldFactions/${id}`;
+    return this.httpClient.get<Faction[]>(url).pipe(
+      tap(_ => this.log(`fetched world id=${id}`)),
+      catchError(this.handleError<Faction[]>(`getHero id=${id}`))
+    );
+  }
+
+  getWorldLocationsById(id: number): Observable<Location[]> {
+    const url =  `http://localhost:8080/build/worldLocations/${id}`;
+    return this.httpClient.get<Location[]>(url).pipe(
+      tap(_ => this.log(`fetched world id=${id}`)),
+      catchError(this.handleError<Location[]>(`getHero id=${id}`))
+    );
+  }
+
+  getUser(username: string, password: string): Observable<User> {
+    const url = `http://localhost:8080/build/user/${username}/${password}`
+    return this.httpClient.get<User>(url).pipe(
+      tap(_ => this.log(`fetched user username=${username} password=${password}`)),
+      catchError(this.handleError<User>(`getHero username=${username} password=${password}`))
     );
   }
 

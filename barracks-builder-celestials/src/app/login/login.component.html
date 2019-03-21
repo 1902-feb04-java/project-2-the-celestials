@@ -1,12 +1,14 @@
 <div>
   <h1>Login</h1>
-  <form>
-    <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <input type="submit">
-    </div>
+  <form #userForm="ngForm" method="GET" (ngSubmit)="isValidUser(userForm);">
+    <label for="username">Username</label>
+    <input ngRequired="true" type="text" name="username" id="username" ngModel>
+    <label for="password">Password</label>
+    <input ngRequired="true" type="password" required name="password" id="password" ngModel>
+    <input type="submit">
   </form>
+  <div *ngIf="submitted">
+    <h1 *ngIf="user; else notValid">Hello, {{user.username}}</h1>
+    <ng-template #notValid><h1>Sorry, your username and/or password is incorrect</h1></ng-template>
+  </div>
 </div>
