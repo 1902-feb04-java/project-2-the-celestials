@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { World } from '../world';
 import {Weapon} from '../weapon';
+import {Defense} from '../defense';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +43,13 @@ export class HttpService {
     .pipe(
       tap(_ => this.log('fetched weapons')),
       catchError(this.handleError<Weapon[]>('getWeapons', []))
+    );
+  } 
+  getDefenses(): Observable<Defense[]>{
+    return this.httpClient.get<Defense[]>("http://localhost:8080/build/defenses")
+    .pipe(
+      tap(_ => this.log('fetched defenses')),
+      catchError(this.handleError<Defense[]>('getDefenses', []))
     );
   } 
 

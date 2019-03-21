@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UiModule } from './ui/ui.module';
 import { WeaponComponent } from './weapon/weapon.component';
+import { DefenseComponent } from './defense/defense.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { WeaponComponent } from './weapon/weapon.component';
     WorldComponent,
     LoginComponent,
     HomeComponent,
-    WeaponComponent
+    WeaponComponent,
+    DefenseComponent
   ],
   imports: [
     BrowserModule,
