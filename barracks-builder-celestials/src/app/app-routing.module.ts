@@ -7,6 +7,7 @@ import { WeaponComponent } from './weapon/weapon.component';
 import { DefenseComponent } from './defense/defense.component';
 import { FactionComponent } from './faction/faction.component';
 import { LocationComponent } from './location/location.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'faction', component: FactionComponent},
   { path: 'location', component: LocationComponent},
   { path: 'worldtable', component: WorldsTableComponent},
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: ProfileComponent}
 
 ];
 
