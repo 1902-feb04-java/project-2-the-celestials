@@ -9,13 +9,22 @@ import { WorldComponent } from './world/world.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UiModule } from './ui/ui.module';
+import { WeaponComponent } from './weapon/weapon.component';
+import { DefenseComponent } from './defense/defense.component';
+import { FactionComponent } from './faction/faction.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WorldComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    WeaponComponent,
+    DefenseComponent,
+    FactionComponent,
+    LocationComponent
+
   ],
   imports: [
     BrowserModule,

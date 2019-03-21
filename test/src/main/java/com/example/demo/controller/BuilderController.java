@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.test.Defense;
+import com.example.demo.test.DefenseRepo;
 import com.example.demo.test.Faction;
 import com.example.demo.test.FactionRepo;
 import com.example.demo.test.Location;
 import com.example.demo.test.LocationRepo;
 import com.example.demo.test.Tag;
 import com.example.demo.test.TagRepo;
+import com.example.demo.test.Weapon;
+import com.example.demo.test.WeaponRepo;
 import com.example.demo.test.User;
 import com.example.demo.test.UserRepo;
 import com.example.demo.test.World;
@@ -32,6 +36,13 @@ public class BuilderController {
 	@Autowired
 	WorldRepo wr;
 	@Autowired
+	WeaponRepo weaponrepo;
+	@Autowired
+	DefenseRepo defenserepo;
+	@Autowired
+	FactionRepo factionrepo;
+	@Autowired
+	LocationRepo locationrepo;
 	FactionRepo fr;
 	@Autowired
 	LocationRepo lr;
@@ -66,7 +77,24 @@ public class BuilderController {
 	public Iterable<World> getWorlds() {
 		return wr.findAll();
 	}
+	
+	@GetMapping("/weapons")
+	public Iterable<Weapon> getWeapons(){
+		return weaponrepo.findAll();
+	}
+	@GetMapping("/defenses")
+	public Iterable<Defense> getDefenses(){
+		return defenserepo.findAll();
+	}
 
+	@GetMapping("/factions")
+	public Iterable<Faction> getFactions(){
+		return factionrepo.findAll();
+	}
+	@GetMapping("/locations")
+	public Iterable<Location> getLocations(){
+		return locationrepo.findAll();
+    
 	@GetMapping("/worldFactions/{id}")
 	public Iterable<Faction> getWorldFactionsById(@PathVariable("id") int id) {
 		ArrayList<Faction> factions = new ArrayList<Faction>();
