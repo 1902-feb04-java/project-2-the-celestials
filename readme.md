@@ -4,7 +4,6 @@
 - Jonathan Burtson
 - Will Scott
 - Chad Wilson
-- Everette Bilal Evans
 
 ## User stories:
 - User can login
