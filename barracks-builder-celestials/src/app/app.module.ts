@@ -12,6 +12,7 @@ import { UiModule } from './ui/ui.module';
 import { WeaponComponent } from './weapon/weapon.component';
 import { DefenseComponent } from './defense/defense.component';
 import { FactionComponent } from './faction/faction.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FactionComponent } from './faction/faction.component';
     HomeComponent,
     WeaponComponent,
     DefenseComponent,
-    FactionComponent
+    FactionComponent,
+    LocationComponent
 
   ],
   imports: [

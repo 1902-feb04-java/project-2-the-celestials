@@ -6,6 +6,8 @@ import { World } from '../world';
 import {Weapon} from '../weapon';
 import {Defense} from '../defense';
 import {Faction} from '../faction';
+import {Location} from '../location';
+
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +63,13 @@ export class HttpService {
         catchError(this.handleError<Faction[]>('getFactions', []))
       );
   } 
-
+  getLocations(): Observable<Location[]>{
+    return this.httpClient.get<Location[]>("http://localhost:8080/build/locations")
+    .pipe(
+      tap(_ => this.log('fetched locations')),
+      catchError(this.handleError<Location[]>('getLocations', []))
+    );
+} 
   /**
    * Handle Http operation that failed.
    * Let the app continue.
