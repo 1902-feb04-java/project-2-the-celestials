@@ -9,6 +9,9 @@ import { WorldComponent } from './world/world.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UiModule } from './ui/ui.module';
+import { WorldsTableComponent } from './worlds-table/worlds-table.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material';
 import { WeaponComponent } from './weapon/weapon.component';
 import { DefenseComponent } from './defense/defense.component';
 import { FactionComponent } from './faction/faction.component';
@@ -20,6 +23,7 @@ import { LocationComponent } from './location/location.component';
     WorldComponent,
     LoginComponent,
     HomeComponent,
+    WorldsTableComponent,
     WeaponComponent,
     DefenseComponent,
     FactionComponent,
@@ -31,6 +35,8 @@ import { LocationComponent } from './location/location.component';
     UiModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
     FormsModule
   ],
   providers: [],

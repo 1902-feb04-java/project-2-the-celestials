@@ -7,8 +7,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ranges")
 public class Range extends LoreTable {
-//	@OneToOne(mappedBy = "range")
-//	private Weapon weapon;
 
 	public void setName(String name) {
 		this.name = name;
