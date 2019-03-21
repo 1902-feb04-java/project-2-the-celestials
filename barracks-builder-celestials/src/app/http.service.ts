@@ -19,7 +19,6 @@ export class HttpService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    //alert(`HttpService: ${message}`);
     //this.messageService.add(`HeroService: ${message}`);
   }
 

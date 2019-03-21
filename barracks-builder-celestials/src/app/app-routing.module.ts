@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WorldComponent } from './world/world.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'world', component: WorldComponent}
+  { path: 'world', component: WorldComponent},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
