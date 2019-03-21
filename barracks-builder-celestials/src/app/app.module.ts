@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { UiModule } from './ui/ui.module';
 import { WeaponComponent } from './weapon/weapon.component';
 import { DefenseComponent } from './defense/defense.component';
+import { FactionComponent } from './faction/faction.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { DefenseComponent } from './defense/defense.component';
     LoginComponent,
     HomeComponent,
     WeaponComponent,
-    DefenseComponent
+    DefenseComponent,
+    FactionComponent
+
   ],
   imports: [
     BrowserModule,
