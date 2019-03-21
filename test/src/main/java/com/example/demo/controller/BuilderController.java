@@ -14,6 +14,8 @@ import com.example.demo.test.Defense;
 import com.example.demo.test.DefenseRepo;
 import com.example.demo.test.Faction;
 import com.example.demo.test.FactionRepo;
+import com.example.demo.test.Location;
+import com.example.demo.test.LocationRepo;
 import com.example.demo.test.Tag;
 import com.example.demo.test.TagRepo;
 import com.example.demo.test.Weapon;
@@ -35,6 +37,8 @@ public class BuilderController {
 	DefenseRepo defenserepo;
 	@Autowired
 	FactionRepo factionrepo;
+	@Autowired
+	LocationRepo locationrepo;
 
 	@GetMapping("/echo")
 	public String echo(@RequestParam("tagName") String str){
@@ -78,5 +82,9 @@ public class BuilderController {
 	@GetMapping("/factions")
 	public Iterable<Faction> getFactions(){
 		return factionrepo.findAll();
+	}
+	@GetMapping("/locations")
+	public Iterable<Location> getLocations(){
+		return locationrepo.findAll();
 	}
 }
