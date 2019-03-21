@@ -21,7 +21,8 @@ import { UiModule } from './ui/ui.module';
     BrowserModule,
     UiModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
