@@ -12,8 +12,8 @@ import { HttpService } from '../http.service';
 })
 export class WorldComponent implements OnInit {
   @Input() world: World;
-  @Input() factions: Faction;
-  @Input() locations: Location;
+  @Input() factions: Faction[];
+  @Input() locations: Location[];
 
   constructor(private httpService: HttpService) { }
 
@@ -26,8 +26,8 @@ export class WorldComponent implements OnInit {
     const id = parseInt(localStorage.getItem("user_id"));
     this.httpService.getWorldById(id)
      .subscribe(world => this.world = world);
-         //this.httpService.getWorldFactionsById(id)
-      //.subscribe(factions => this.factions = factions);
+    this.httpService.getWorldFactionsById(id)
+      .subscribe(factions => this.factions = factions);
     this.httpService.getWorldLocationsById(id)
       .subscribe(locations => this.locations = locations);
   }

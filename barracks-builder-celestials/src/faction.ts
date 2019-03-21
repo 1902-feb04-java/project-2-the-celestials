@@ -5,4 +5,3 @@ export class Faction {
     population: number[];
     world: number[];
   }
-}

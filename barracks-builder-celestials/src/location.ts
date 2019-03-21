@@ -4,5 +4,4 @@ export class Location {
     description: string;
     world: number[];
   }
-}
 
