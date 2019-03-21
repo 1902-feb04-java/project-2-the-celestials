@@ -94,6 +94,7 @@ public class BuilderController {
 	@GetMapping("/locations")
 	public Iterable<Location> getLocations(){
 		return locationrepo.findAll();
+	}
     
 	@GetMapping("/worldFactions/{id}")
 	public Iterable<Faction> getWorldFactionsById(@PathVariable("id") int id) {
