@@ -7,8 +7,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "bodyslots")
 public class BodySlot extends LoreTable {
-	@OneToOne(mappedBy="slot")
-	private Defense defense;
+//	@OneToOne(mappedBy="slot")
+//	private Defense defense;
 	
 	public void setName(String name) {
 		this.name = name;
@@ -31,17 +31,17 @@ public class BodySlot extends LoreTable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Defense getDefense() {
-		return defense;
-	}
-
-	public void setDefense(Defense defense) {
-		this.defense = defense;
-	}
-
-	@Override
-	public String toString() {
-		return "BodySlot [defense=" + defense + ", id=" + id + ", name=" + name + "]";
-	}
-
+//	public Defense getDefense() {
+//		return defense;
+//	}
+//
+//	public void setDefense(Defense defense) {
+//		this.defense = defense;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "BodySlot [defense=" + defense + ", id=" + id + ", name=" + name + "]";
+//	}
+//
 }
