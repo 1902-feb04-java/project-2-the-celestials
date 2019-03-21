@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.test.Defense;
+import com.example.demo.test.DefenseRepo;
+import com.example.demo.test.Faction;
+import com.example.demo.test.FactionRepo;
 import com.example.demo.test.Tag;
 import com.example.demo.test.TagRepo;
 import com.example.demo.test.Weapon;
@@ -27,6 +31,10 @@ public class BuilderController {
 	WorldRepo wr;
 	@Autowired
 	WeaponRepo weaponrepo;
+	@Autowired
+	DefenseRepo defenserepo;
+	@Autowired
+	FactionRepo factionrepo;
 
 	@GetMapping("/echo")
 	public String echo(@RequestParam("tagName") String str){
@@ -62,5 +70,13 @@ public class BuilderController {
 	public Iterable<Weapon> getWeapons(){
 		return weaponrepo.findAll();
 	}
+	@GetMapping("/defenses")
+	public Iterable<Defense> getDefenses(){
+		return defenserepo.findAll();
+	}
 
+	@GetMapping("/factions")
+	public Iterable<Faction> getFactions(){
+		return factionrepo.findAll();
+	}
 }
