@@ -23,20 +23,34 @@ VALUES
 
 INSERT INTO worlds (name, description, user_id)
 VALUES
-('Westeros', 'The world of GoT', 1),
-('Star Wars', 'The world of the Star Wars franchise', 2);
+('Westeros', 'The world of GoT', 
+ 	(SELECT id FROM users WHERE username='iamauser')
+),
+('Star Wars', 'The world of the Star Wars franchise', 
+ 	(SELECT id FROM users WHERE username='yesmetoo')
+);
 
 INSERT INTO world_tags(world_id, tag_id)
 VALUES
-(1,1), -- Westeros is fantasy
-(2,2); -- Star wars is sci-fi
+((SELECT id FROM worlds WHERE name='Westeros'),(SELECT id FROM tags WHERE name='Fantasy')), -- Westeros is fantasy
+((SELECT id FROM worlds WHERE name='Star Wars'),(SELECT id FROM tags WHERE name='Sci-Fi')); -- Star wars is sci-fi
 
 -- Use this: http://hastur.net/wiki/Body_Slots_(D&D)
 INSERT INTO bodyslots (name)
 VALUES
-('head'),
-('chest'),
-('hand');
+('Head'),
+('Face'),
+('Torso'),
+('Back'),
+('Throat'),
+('Arm'),
+('Hand'),
+('Rings'),
+('Body'),
+('Waist'),
+('Legs'),
+('Main hand'),
+('Off hand');
 
 -- Explaination https://www.reddit.com/r/DungeonWorld/comments/2dml94/weapon_ranges/
 INSERT INTO ranges (name)
@@ -49,8 +63,8 @@ VALUES
 
 INSERT INTO factions (name, description, population, world_id)
 VALUES
-('Human','fleshy, bag of meat and organs',300000000,1),
-('Jedi','multi-race, collection of force weilders',2000,2);
+('Human','fleshy, bag of meat and organs',300000000,(SELECT id FROM worlds WHERE name='Westeros')),
+('Jedi','multi-race, collection of force weilders',2000,(SELECT id FROM worlds WHERE name='Star Wars'));
 
 INSERT INTO faction_tags (faction_id, tag_id)
 VALUES
@@ -64,8 +78,8 @@ VALUES
 
 INSERT INTO weapons (name, description, range_id)
 VALUES
-('Dragon glass','Used to kill white walkers',1),
-('Blaster','automatic projectile',4);
+('Dragon glass','Used to kill white walkers',(SELECT id FROM ranges WHERE name='Hand')),
+('Blaster','automatic laser projectile',(SELECT id FROM ranges WHERE name='Near'));
 
 INSERT INTO faction_weapons (faction_id, weapon_id)
 VALUES
@@ -78,13 +92,12 @@ VALUES
 
 INSERT INTO defenses (name, description, bodyslot_id)
 VALUES
-('Body armor','chest plate',2),
-('light saber','redirect blaster bullets',3);
+('Knights Armor','chest plate', (SELECT id FROM bodyslots WHERE name='Torso')),
+('lightsaber','redirect blaster bullets', (SELECT id FROM bodyslots WHERE name='Main hand'));
 
 INSERT INTO defense_tags (defense_id, tag_id)
 VALUES
 (1,1),
 (2,2);
-
 
 

@@ -40,9 +40,6 @@ public class BuilderController {
 	@Autowired
 	DefenseRepo defenserepo;
 	@Autowired
-	FactionRepo factionrepo;
-	@Autowired
-	LocationRepo locationrepo;
 	FactionRepo fr;
 	@Autowired
 	LocationRepo lr;
@@ -89,11 +86,11 @@ public class BuilderController {
 
 	@GetMapping("/factions")
 	public Iterable<Faction> getFactions(){
-		return factionrepo.findAll();
+		return fr.findAll();
 	}
 	@GetMapping("/locations")
 	public Iterable<Location> getLocations(){
-		return locationrepo.findAll();
+		return lr.findAll();
 	}
     
 	@GetMapping("/worldFactions/{id}")
