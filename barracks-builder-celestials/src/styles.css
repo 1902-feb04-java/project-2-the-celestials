@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  height: 100%; 
+}
+
+body{
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: url(http://pictify.saatchigallery.com/files/works/architectural-worlds-by-antifan-real-on-deviantart-1354430834_org.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-size: auto;
+} 

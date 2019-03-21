@@ -12,6 +12,10 @@ import { UiModule } from './ui/ui.module';
 import { WorldsTableComponent } from './worlds-table/worlds-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material';
+import { WeaponComponent } from './weapon/weapon.component';
+import { DefenseComponent } from './defense/defense.component';
+import { FactionComponent } from './faction/faction.component';
+import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,12 @@ import { MatTableModule } from '@angular/material';
     WorldComponent,
     LoginComponent,
     HomeComponent,
-    WorldsTableComponent
+    WorldsTableComponent,
+    WeaponComponent,
+    DefenseComponent,
+    FactionComponent,
+    LocationComponent
+
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,8 @@ import { MatTableModule } from '@angular/material';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
