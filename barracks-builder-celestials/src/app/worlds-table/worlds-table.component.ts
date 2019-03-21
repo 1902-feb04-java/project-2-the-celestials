@@ -8,7 +8,7 @@ import { HttpService } from '../http.service';
   styleUrls: ['./worlds-table.component.css']
 })
 export class WorldsTableComponent implements OnInit {
-  columnsToDisplay = ['name'];
+  columnsToDisplay = ['name', 'description'];
   worlds : World[];
   SAMPLE_WORLDS: World[] = [
     {id: 1, name: 'World1', description: 'uiahsdia', tags:[1,2], user:1, locations:[1], factions:[1]},
