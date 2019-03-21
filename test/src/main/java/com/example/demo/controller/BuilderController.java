@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,8 @@ import com.example.demo.test.Tag;
 import com.example.demo.test.TagRepo;
 import com.example.demo.test.Weapon;
 import com.example.demo.test.WeaponRepo;
+import com.example.demo.test.User;
+import com.example.demo.test.UserRepo;
 import com.example.demo.test.World;
 import com.example.demo.test.WorldRepo;
 
@@ -39,6 +43,11 @@ public class BuilderController {
 	FactionRepo factionrepo;
 	@Autowired
 	LocationRepo locationrepo;
+	FactionRepo fr;
+	@Autowired
+	LocationRepo lr;
+	@Autowired
+	UserRepo ur;
 
 	@GetMapping("/echo")
 	public String echo(@RequestParam("tagName") String str){
@@ -58,7 +67,6 @@ public class BuilderController {
 		tr.save(tag);
 		return tag;
 	}
-	
 	
 	@GetMapping("/worlds/{id}")
 	public World getWorldById(@PathVariable("id") int id) {
@@ -86,5 +94,36 @@ public class BuilderController {
 	@GetMapping("/locations")
 	public Iterable<Location> getLocations(){
 		return locationrepo.findAll();
+    
+	@GetMapping("/worldFactions/{id}")
+	public Iterable<Faction> getWorldFactionsById(@PathVariable("id") int id) {
+		ArrayList<Faction> factions = new ArrayList<Faction>();
+		for(Faction f : fr.findAll()) {
+			if(f.getWorld().getId() == id) {
+				factions.add(f);
+			}
+		}
+		return factions;
+	}
+	
+	@GetMapping("/worldLocations/{id}")
+	public Iterable<Location> getWorldLocationsById(@PathVariable("id") int id) {
+		ArrayList<Location> locations = new ArrayList<Location>();
+		for(Location l : lr.findAll()) {
+			if(l.getWorld().getId() == id) {
+				locations.add(l);
+			}
+		}
+		return locations;
+	}
+	
+	@GetMapping("user/{username}/{password}")
+	public User getUser(@PathVariable("username") String username, @PathVariable("password") String password) {
+		for(User u : ur.findAll()) {
+			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
+				return u;
+			}
+		}
+		return null;
 	}
 }

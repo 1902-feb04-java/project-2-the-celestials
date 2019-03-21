@@ -4,5 +4,5 @@ export class Faction {
     description: string;
     population: number[];
     world: number[];
-
   }
+}

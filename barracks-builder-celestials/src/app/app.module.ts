@@ -30,7 +30,8 @@ import { LocationComponent } from './location/location.component';
     BrowserModule,
     UiModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

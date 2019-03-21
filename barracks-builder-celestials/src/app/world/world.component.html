@@ -1,16 +1,14 @@
-<div>
-  <h1>World Name <span>by User</span></h1>
-  <h2>Description: 
-    <span>This is a description of my world</span>
+<div *ngIf="world" class="container">
+  <h1>{{world.name}} <span>by {{world.user.username}}</span></h1>
+  <h2>Description:
+    <span>{{world.descriptor}}</span>
   </h2>
-  <h2 id="header_tags">Tags: 
-    <span><i class="fa fa-tag"></i>Fantasy </span> 
-    <span><i class="fa fa-tag"></i>Elves </span> 
-    <span><i class="fa fa-tag"></i>Ogres </span>
+  <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
+    <span>&#9898;{{tag.name}}</span>
   </h2>
 </div>
 <div id="factions_and_locations_div">
-  <div>
+  <div *ngIf="factions">
     <h2>Factions</h2>
     <table>
       <tr>
@@ -18,39 +16,23 @@
         <th>Description</th>
         <th>Population</th>
       </tr>
-      <tr class="table_row">
-        <td>Elves</td>
-        <td>A land of elves</td>
-        <td>2000000</td>
-      </tr>
-      <tr class="table_row">
-        <td>Ogres</td>
-        <td>A land of Ogres</td>
-        <td>1000000</td>
+      <tr class="table_row" *ngFor="let faction of factions">
+        <td>{{faction.name}}</td>
+        <td>{{faction.descriptor}}</td>
+        <td>{{faction.population}}</td>
       </tr>
     </table>
   </div>
-  <div>
+  <div *ngIf="locations">
     <h2>Locations</h2>
     <table>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-        </tr>
-        <tr class="table_row">
-          <td>Home of the Elves</td>
-          <td>This is the home of the Elves</td>
-        </tr>
-        <tr class="table_row">
-          <td>Home of the Ogres</td>
-          <td>This is the home of the Ogres</td>
-        </tr>
-      </table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      <tr class="table_row" *ngFor="let location of locations">
+        <td>{{location.name}}</td>
+        <td>{{location.descriptor}}</td>
+      </tr>
+    </table>
   </div>
-
-<p>
-  world works!
-</p>
-<div *ngIf="world">
-  <h2>{{world.name}}</h2>
-</div>

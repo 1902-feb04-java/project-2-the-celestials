@@ -7,7 +7,7 @@ import {Weapon} from '../weapon';
 import {Defense} from '../defense';
 import {Faction} from '../faction';
 import {Location} from '../location';
-
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,6 @@ export class HttpService {
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
-    // alert(`HttpService: ${message}`);
-    //this.messageService.add(`HeroService: ${message}`);
   }
 
   /** GET worlds from the server */
@@ -42,6 +40,7 @@ export class HttpService {
       catchError(this.handleError<World>(`getHero id=${id}`))
     );
   }
+
   getWeapons(): Observable<Weapon[]>{
     return this.httpClient.get<Weapon[]>("http://localhost:8080/build/weapons")
     .pipe(
@@ -70,6 +69,30 @@ export class HttpService {
       catchError(this.handleError<Location[]>('getLocations', []))
     );
 } 
+  getWorldFactionsById(id: number): Observable<Faction[]> {
+    const url = `http://localhost:8080/build/worldFactions/${id}`;
+    return this.httpClient.get<Faction[]>(url).pipe(
+      tap(_ => this.log(`fetched world id=${id}`)),
+      catchError(this.handleError<Faction[]>(`getHero id=${id}`))
+    );
+  }
+
+  getWorldLocationsById(id: number): Observable<Location[]> {
+    const url =  `http://localhost:8080/build/worldLocations/${id}`;
+    return this.httpClient.get<Location[]>(url).pipe(
+      tap(_ => this.log(`fetched world id=${id}`)),
+      catchError(this.handleError<Location[]>(`getHero id=${id}`))
+    );
+  }
+
+  getUser(username: string, password: string): Observable<User> {
+    const url = `http://localhost:8080/build/user/${username}/${password}`
+    return this.httpClient.get<User>(url).pipe(
+      tap(_ => this.log(`fetched user username=${username} password=${password}`)),
+      catchError(this.handleError<User>(`getHero username=${username} password=${password}`))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

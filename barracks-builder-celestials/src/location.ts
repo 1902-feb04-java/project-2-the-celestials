@@ -3,5 +3,6 @@ export class Location {
     name: string;
     description: string;
     world: number[];
-
   }
+}
+

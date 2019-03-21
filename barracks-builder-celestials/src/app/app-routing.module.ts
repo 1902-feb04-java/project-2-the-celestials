@@ -16,8 +16,6 @@ const routes: Routes = [
   { path: 'faction', component: FactionComponent},
   { path: 'location', component: LocationComponent}
 
-
-
 ];
 
 @NgModule({
