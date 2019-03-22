@@ -103,6 +103,10 @@ public class Faction extends AbstractLoreItem {
 	public void setDefenses(List<Defense> defenses) {
 		this.defenses = defenses;
 	}
+	
+	public void addDefense(Defense defense) {
+		defenses.add(defense);
+	}
 
 	@Override
 	public String toString() {
