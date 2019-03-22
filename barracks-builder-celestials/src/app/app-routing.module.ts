@@ -8,6 +8,8 @@ import { DefenseComponent } from './defense/defense.component';
 import { FactionComponent } from './faction/faction.component';
 import { LocationComponent } from './location/location.component';
 import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'location', component: LocationComponent},
   { path: 'worldtable', component: WorldsTableComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: 'home', component: HomeComponent}
+
 
 ];
 
