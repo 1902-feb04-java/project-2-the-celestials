@@ -9,6 +9,7 @@ import { Faction} from '../../faction';
 })
 export class FactionComponent implements OnInit {
 @Input() factions: Faction[];
+columnsToDisplay = ['name', 'description','worlds','population'];
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {

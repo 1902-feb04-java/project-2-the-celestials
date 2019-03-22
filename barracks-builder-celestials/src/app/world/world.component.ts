@@ -19,6 +19,10 @@ export class WorldComponent implements OnInit {
   userId: number;
   private sub: any;
 
+  columnsToDisplay = ['name','description','world'];
+  columnsToDisplay1 = ['name','description','world','population'];
+  columnsToDisplay2 = ['name','description'];
+
   constructor(private httpService: HttpService, private route : ActivatedRoute) { }
 
   ngOnInit() {

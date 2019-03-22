@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Weapon} from '../../weapon';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 
 @Component({
@@ -10,10 +11,14 @@ import { Weapon} from '../../weapon';
 })
 export class WeaponComponent implements OnInit {
   @Input() weapons : Weapon[];
-  columnsToDisplay = ['name','description','range'];
+  columnsToDisplay = ['name','range','description'];
+ 
+
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    
     this.getWeapon();
   }
   getWeapon(): void {

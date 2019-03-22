@@ -1,5 +1,36 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
-<div *ngFor="let faction of factions">
-  <h2><i class="fas fa-users"></i> {{faction.name}}</h2>
+<!-- <div *ngFor="let faction of factions"> -->
+  <!-- <h2><i class="fas fa-users"></i> {{faction.name}}</h2> -->
   <!-- <h2>{{weapon.description}}</h2> -->
-</div>
+<!-- </div> -->
+<h4><strong><i class="fas fa-baby"></i> FACTIONS <i class="fas fa-hiking"></i></strong></h4>
+<br>
+<br>
+<table class="table table-bordered table-hover" mat-table [dataSource]="factions">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"><i class="fas fa-users"></i> {{element.name}} </td>
+  </ng-container>
+   <ng-container matColumnDef="description"> 
+    <th mat-header-cell *matHeaderCellDef> description </th>
+    <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
+  </ng-container> 
+  <!-- <ng-container matColumnDef="populations">
+    <th mat-header-cell *matHeaderCellDef> population </th>
+    <td mat-cell *matCellDef="let element">{{element.population}} </td>
+  </ng-container>  -->
+  <ng-container matColumnDef="worlds">
+    <th mat-header-cell *matHeaderCellDef> Native World </th>
+    <td mat-cell *matCellDef="let element">{{element.world.name}} </td>
+  </ng-container> 
+   <ng-container matColumnDef="population">
+    <th mat-header-cell *matHeaderCellDef> population </th>
+    <td mat-cell *matCellDef="let element">{{element.population}} </td>
+  </ng-container> 
+
+
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

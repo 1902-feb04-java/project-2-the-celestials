@@ -6,13 +6,16 @@ html, body {
 }
 
 body{
-    margin: 0;
+    /* margin: 0; */
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* background-color: #434344; */
     background: url(http://pictify.saatchigallery.com/files/works/architectural-worlds-by-antifan-real-on-deviantart-1354430834_org.jpg);
-    background-size: cover;
-    background-repeat:no-repeat;
     background-size: auto;
+    background-size: cover; 
+    background-repeat:no-repeat;
+   
+
 } 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { font-family: Roboto, "Helvetica Neue", sans-serif; }
