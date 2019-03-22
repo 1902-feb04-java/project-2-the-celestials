@@ -16,9 +16,10 @@
       <em>"{{world.descriptor}}"</em>
      <br>
      <br>
-      <h6 id="header_tags" *ngFor="let tag of world.tags">Tags:  
-      <span><i class="fas fa-tag"></i>  {{tag.name}}</span>
-      </h6>
+     <h6>Tags:</h6>
+      <span id="header_tags" *ngFor="let tag of world.tags">  
+      <i class="fas fa-tag"></i>  {{tag.name}}
+      </span>
     </div>
   </div>
   <!-- <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
@@ -67,7 +68,7 @@
       <td mat-cell *matCellDef="let element"><i class="fas fa-map-marked-alt"></i> {{element.name}} </td>
     </ng-container>
      <ng-container matColumnDef="description"> 
-      <th mat-header-cell *matHeaderCellDef> description </th>
+      <th mat-header-cell *matHeaderCellDef> Description </th>
       <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
     </ng-container> 
     <ng-container matColumnDef="world">
@@ -84,7 +85,7 @@
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Faction Name</th>
-      <td mat-cell *matCellDef="let element"><i class="fas fa-map-marked-alt"></i> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"><i class="fas fa-users"></i>{{element.name}} </td>
     </ng-container>
      <ng-container matColumnDef="description"> 
       <th mat-header-cell *matHeaderCellDef> description </th>

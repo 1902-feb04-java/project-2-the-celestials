@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "defenses")
 public class Defense extends AbstractLoreItem {
-	@OneToOne(optional=false)
-	@JoinColumn(name="bodyslot_id", nullable=false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name="bodyslot_id", nullable=false)
 	private BodySlot slot;
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "Defense_Tags", joinColumns = { @JoinColumn(name = "defense_id") }, inverseJoinColumns = {
