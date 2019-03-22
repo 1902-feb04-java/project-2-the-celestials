@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
-  { path: 'world', component: WorldComponent},
+  { path: 'world/:id', component: WorldComponent},
   { path: 'weapon', component: WeaponComponent},
   { path: 'defense', component: DefenseComponent},
   { path: 'faction', component: FactionComponent},

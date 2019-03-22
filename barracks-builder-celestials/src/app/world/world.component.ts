@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { World } from '../../world';
 import { Faction } from '../../faction';
 import { Location } from '../../location';
 import { HttpService } from '../http.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-world',
@@ -14,27 +15,36 @@ export class WorldComponent implements OnInit {
   @Input() world: World;
   @Input() factions: Faction[];
   @Input() locations: Location[];
+  @Input() id: number;
+  userId: number;
+  private sub: any;
 
   columnsToDisplay = ['name','description','world'];
   columnsToDisplay1 = ['name','description','world','population'];
   columnsToDisplay2 = ['name','description'];
 
-
-
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService, private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.getWorld();
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+
+      // In a real app: dispatch action to load the details here.
+   });
+   this.getWorld();
   }
 
+  ngOnDestory() {
+    this.sub.unsubscribe();
+  }
   getWorld(): void {
     // const id = +this.route.snapshot.paramMap.get('id');
-    const id = parseInt(localStorage.getItem("user_id"));
-    this.httpService.getWorldById(id)
+    this.userId = parseInt(localStorage.getItem("user_id"));
+    this.httpService.getWorldById(this.id)
      .subscribe(world => this.world = world);
-    this.httpService.getWorldFactionsById(id)
+    this.httpService.getWorldFactionsById(this.id)
       .subscribe(factions => this.factions = factions);
-    this.httpService.getWorldLocationsById(id)
+    this.httpService.getWorldLocationsById(this.id)
       .subscribe(locations => this.locations = locations);
   }
 
