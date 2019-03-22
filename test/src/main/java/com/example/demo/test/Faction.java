@@ -63,6 +63,10 @@ public class Faction extends AbstractLoreItem {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
+	
+	public void addTag(Tag tag) {
+		tags.add(tag);
+	}
 
 	public long getPopulation() {
 		return population;
@@ -86,6 +90,10 @@ public class Faction extends AbstractLoreItem {
 
 	public void setWeapons(List<Weapon> weapons) {
 		this.weapons = weapons;
+	}
+	
+	public void addWeapon(Weapon weapon) {
+		weapons.add(weapon);
 	}
 
 	public List<Defense> getDefenses() {

@@ -5,8 +5,8 @@
   <div class="navbar-expand mr-auto">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" href='/'><i class="fas fa-home"></i></a>
-      <a class="nav-item nav-link" href="/profile">Profile</a>
       <a class="nav-item nav-link" href="/worldtable">Worlds</a>
+      <a class="nav-item nav-link" href="/profile" *ngIf="getUser() !== null">Profile</a>
       <a class="nav-item nav-link" href="/location">Locations</a>
       <a class="nav-item nav-link" href="/defense">Defenses</a>
       <a class="nav-item nav-link" href="/weapon">Weapons</a>
