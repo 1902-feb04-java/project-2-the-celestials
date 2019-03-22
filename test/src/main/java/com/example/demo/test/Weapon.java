@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "weapons")
 public class Weapon extends AbstractLoreItem {
-	@OneToOne(optional = false)
-	@JoinColumn(name = "range_id", nullable = false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name = "range_id", nullable = false)
 	private Range range;
 	@ManyToMany
 	@JoinTable(name = "Weapons_Tags", joinColumns = { @JoinColumn(name = "weapon_id") }, inverseJoinColumns = {
@@ -63,6 +63,10 @@ public class Weapon extends AbstractLoreItem {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+	
+	public void addTag(Tag tag) {
+		tags.add(tag);
 	}
 
 	/*public Faction getFaction() {
