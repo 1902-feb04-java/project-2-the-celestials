@@ -1,13 +1,29 @@
-<div *ngIf="world" class="container">
+<!-- <div *ngIf="world" class="container">
   <h1>{{world.name}} <span>by {{world.user.username}}</span></h1>
   <h2>Description:
     <span>{{world.descriptor}}</span>
-  </h2>
-  <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
+  </h2> -->
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading">{{world.user.username}}'s world</div>
+    <div class="panel-body">
+      <!-- <h3> User name: {{world.user.username}}</h3> -->
+      <h3>{{world.name}}</h3>
+     
+      <h6 id="header_tags" *ngFor="let tag of world.tags">Tags:  
+      <span><i class="fas fa-tag"></i>  {{tag.name}}</span>
+      </h6>
+    </div>
+  </div>
+  <!-- <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
     <span><i class="fas fa-tag"></i>{{tag.name}}</span>
-  </h2>
-</div>
-<div id="factions_and_locations_div">
+  </h2> -->
+<!-- </div> -->
+
+
+
+<!-- <div id="factions_and_locations_div">
   <div *ngIf="factions">
     <h2>Factions</h2>
     <table>
@@ -35,4 +51,47 @@
         <td>{{location.descriptor}}</td>
       </tr>
     </table>
-  </div>
+  </div>  -->
+  
+
+  <table class="table table-bordered table-hover" mat-table [dataSource]="locations">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Location Name</th>
+      <td mat-cell *matCellDef="let element"><i class="fas fa-map-marked-alt"></i> {{element.name}} </td>
+    </ng-container>
+     <ng-container matColumnDef="description"> 
+      <th mat-header-cell *matHeaderCellDef> description </th>
+      <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
+    </ng-container> 
+    <!-- <ng-container matColumnDef="range">
+      <th mat-header-cell *matHeaderCellDef> range </th>
+      <td mat-cell *matCellDef="let element">{{element.range.name}} </td>
+    </ng-container>  -->
+  
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+  
+  <table class="table table-bordered table-hover" mat-table [dataSource]="factions">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Faction Name</th>
+      <td mat-cell *matCellDef="let element"><i class="fas fa-map-marked-alt"></i> {{element.name}} </td>
+    </ng-container>
+     <ng-container matColumnDef="description"> 
+      <th mat-header-cell *matHeaderCellDef> description </th>
+      <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
+    </ng-container> 
+    <!-- <ng-container matColumnDef="range">
+      <th mat-header-cell *matHeaderCellDef> range </th>
+      <td mat-cell *matCellDef="let element">{{element.range.name}} </td>
+    </ng-container>  -->
+  
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
+
+  

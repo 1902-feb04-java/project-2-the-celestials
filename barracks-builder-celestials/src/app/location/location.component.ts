@@ -9,6 +9,8 @@ import { Location} from '../../location';
 })
 export class LocationComponent implements OnInit {
 @Input() locations: Location[];
+columnsToDisplay = ['name', 'description'];
+
 
   constructor(private httpService: HttpService) { }
 

@@ -8,6 +8,7 @@ import { Defense} from '../../defense';
 })
 export class DefenseComponent implements OnInit {
 @Input() defenses: Defense[];
+columnsToDisplay = ['name'];
 
   constructor(private httpService: HttpService) { }
 

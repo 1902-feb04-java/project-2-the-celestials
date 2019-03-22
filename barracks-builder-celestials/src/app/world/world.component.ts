@@ -14,6 +14,7 @@ export class WorldComponent implements OnInit {
   @Input() world: World;
   @Input() factions: Faction[];
   @Input() locations: Location[];
+  columnsToDisplay = ['name', 'description'];
 
   constructor(private httpService: HttpService) { }
 

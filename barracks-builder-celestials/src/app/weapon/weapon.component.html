@@ -6,19 +6,29 @@
 
   <table class="table table-bordered table-hover" mat-table [dataSource]="weapons">
 
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    
+  
+    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"><i class="fas fa-skull-crossbones"></i> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> description </th>
-      <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
-    </ng-container>
+  
+    <!-- Weight Column -->
     <ng-container matColumnDef="range">
       <th mat-header-cell *matHeaderCellDef> range </th>
-      <td mat-cell *matCellDef="let element">{{element.range.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.range.name}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> description </th>
+      <td mat-cell *matCellDef="let weapon"> {{weapon.descriptor}} </td>
+    </ng-container>
+  
+  
   
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
