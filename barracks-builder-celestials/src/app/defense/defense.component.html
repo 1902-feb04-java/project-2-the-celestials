@@ -14,10 +14,11 @@
     <th mat-header-cell *matHeaderCellDef> description </th>
     <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
   </ng-container>
-  <!-- <ng-container matColumnDef="bodyslot">
-    <th mat-header-cell *matHeaderCellDef> bodyslots </th>
-    <td mat-cell *matCellDef="let element">{{element.bodyslots.name}} </td>
-  </ng-container> -->
+  <ng-container matColumnDef="slot">
+    <th mat-header-cell *matHeaderCellDef> Body Slot </th>
+    <td mat-cell *matCellDef="let element">{{element.slot.name}} </td>
+  </ng-container>
+  
 
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
