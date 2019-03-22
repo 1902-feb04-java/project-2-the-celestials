@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { World } from '../../world';
 import { HttpService } from '../http.service';
 
@@ -9,19 +9,41 @@ import { HttpService } from '../http.service';
 })
 export class WorldsTableComponent implements OnInit {
   columnsToDisplay = ['name', 'description'];
-  worlds : World[];
-  SAMPLE_WORLDS: World[] = [
-    {id: 1, name: 'World1', description: 'uiahsdia', tags:[1,2], user:1, locations:[1], factions:[1]},
-  ];
+  worlds: World[];
+  @Input() userId: number;
+  currentUser : number;
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     this.getWorlds();
+    this.currentUser = parseInt(localStorage.getItem('user_id'));
   }
 
-  getWorlds() : void {
-    this.httpService.getWorlds()
-    .subscribe(worlds => this.worlds = worlds);
+  getWorlds(): void {
+    if (this.userId > 0) {
+      this.httpService.getUserWorlds(this.userId)
+        .subscribe(worlds => this.worlds = worlds);
+    }
+    else {
+      this.httpService.getWorlds()
+        .subscribe(worlds => this.worlds = worlds);
+    }
+  }
+
+  goToWorld(name : string): void {
+    let worldId;
+    this.worlds.forEach(element => {
+      if (element.name === name){
+        worldId=element.id;
+      }
+    });
+    //alert('it works!'+worldId);
+    window.location.href= "/world/"+worldId;
+  }
+
+  newWorld(): void {
+    alert('it works!'); // test
+    //window.location.href= "/";
   }
 }
