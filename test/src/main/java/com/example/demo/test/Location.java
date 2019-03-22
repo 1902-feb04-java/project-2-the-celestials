@@ -52,6 +52,10 @@ public class Location extends AbstractLoreItem {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
+	
+	public void addTag(Tag tag) {
+		tags.add(tag);
+	}
 
 	public World getWorld() {
 		return world;

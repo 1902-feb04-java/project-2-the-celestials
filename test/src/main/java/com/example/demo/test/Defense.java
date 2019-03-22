@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "defenses")
 public class Defense extends AbstractLoreItem {
 	@OneToOne(optional=false)
-	@JoinColumn(name="bodyslot_id", unique=true, nullable=false, updatable = false)
+	@JoinColumn(name="bodyslot_id", nullable=false, updatable = false)
 	private BodySlot slot;
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "Defense_Tags", joinColumns = { @JoinColumn(name = "defense_id") }, inverseJoinColumns = {
@@ -72,6 +72,10 @@ public class Defense extends AbstractLoreItem {
 
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
+	}
+	
+	public void addTag(Tag tag) {
+		tags.add(tag);
 	}
 
 	/*@Override

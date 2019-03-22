@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "weapons")
 public class Weapon extends AbstractLoreItem {
 	@OneToOne(optional = false)
-	@JoinColumn(name = "range_id", unique = true, nullable = false, updatable = false)
+	@JoinColumn(name = "range_id", nullable = false, updatable = false)
 	private Range range;
 	@ManyToMany
 	@JoinTable(name = "Weapons_Tags", joinColumns = { @JoinColumn(name = "weapon_id") }, inverseJoinColumns = {
@@ -39,6 +39,14 @@ public class Weapon extends AbstractLoreItem {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getDescriptor() {
+		return description;
+	}
+
+	public void setDescriptor(String description) {
+		this.description = description;
 	}
 
 	public Range getRange() {
