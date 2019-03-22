@@ -40,9 +40,9 @@ public class BuilderController {
 	@Autowired
 	WorldRepo worldRepo;
 	@Autowired
-	WeaponRepo weaponrepo;
+	WeaponRepo weaponRepo;
 	@Autowired
-	DefenseRepo defenserepo;
+	DefenseRepo defenseRepo;
 	@Autowired
 	FactionRepo factionRepo;
 	@Autowired
@@ -50,7 +50,7 @@ public class BuilderController {
 	@Autowired
 	UserRepo userRepo;
 	@Autowired
-	RangeRepo rr;
+	RangeRepo rangeRepo;
 
 	@GetMapping("/echo")
 	public String echo(@RequestParam("tagName") String str) {
@@ -107,12 +107,12 @@ public class BuilderController {
 
 	@GetMapping("/weapons")
 	public Iterable<Weapon> getWeapons() {
-		return weaponrepo.findAll();
+		return weaponRepo.findAll();
 	}
 
 	@GetMapping("/defenses")
 	public Iterable<Defense> getDefenses() {
-		return defenserepo.findAll();
+		return defenseRepo.findAll();
 	}
 
 	@GetMapping("/factions")
@@ -164,7 +164,7 @@ public class BuilderController {
 		world.setName(name);
 		world.setDescriptor(descriptor);
 		world.setUser(user);
-		wr.save(world);
+		worldRepo.save(world);
 	}
 	
 	@PostMapping("/addTagToWorld")
@@ -192,7 +192,7 @@ public class BuilderController {
 	
 	@PostMapping("/addTagToDefense")
 	public void addTagToDefense(@RequestParam String name, @RequestParam int defense_id) {
-		Defense defense = defenserepo.findById(defense_id).get();
+		Defense defense = defenseRepo.findById(defense_id).get();
 		Tag tag;
 		for(Tag t : tagRepo.findAll()) {
 			if(t.getName().equals(name)) {
@@ -203,7 +203,7 @@ public class BuilderController {
 					}
 				}
 				defense.addTag(t);
-				defenserepo.save(defense);
+				defenseRepo.save(defense);
 				return;
 			}
 		}
@@ -217,7 +217,7 @@ public class BuilderController {
 	public void addTagToFaction(@RequestParam String name, @RequestParam int faction_id) {
 		Faction faction = factionRepo.findById(faction_id).get();
 		Tag tag;
-		for(Tag t : tr.findAll()) {
+		for(Tag t : tagRepo.findAll()) {
 			if(t.getName().equals(name)) {
 				List<Tag> tags = faction.getTags();
 				for(Tag ft : tags) {
@@ -286,11 +286,11 @@ public class BuilderController {
 			@RequestParam int faction_id) {
 		Weapon weapon = new Weapon();
 		Faction faction = factionRepo.findById(faction_id).get();
-		Range range = rr.findById(range_id).get();
+		Range range = rangeRepo.findById(range_id).get();
 		weapon.setName(name);
 		weapon.setDescriptor(descriptor);
 		weapon.setRange(range);
 		faction.addWeapon(weapon);
-		weaponrepo.save(weapon);
+		weaponRepo.save(weapon);
 	}
 }
