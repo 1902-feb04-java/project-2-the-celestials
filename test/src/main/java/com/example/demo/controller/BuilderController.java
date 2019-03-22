@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,19 +36,19 @@ import com.example.demo.test.WorldRepo;
 @RequestMapping("/build")
 public class BuilderController {
 	@Autowired
-	TagRepo tr;
+	TagRepo tagRepo;
 	@Autowired
-	WorldRepo wr;
+	WorldRepo worldRepo;
 	@Autowired
 	WeaponRepo weaponrepo;
 	@Autowired
 	DefenseRepo defenserepo;
 	@Autowired
-	FactionRepo fr;
+	FactionRepo factionRepo;
 	@Autowired
-	LocationRepo lr;
+	LocationRepo locationRepo;
 	@Autowired
-	UserRepo ur;
+	UserRepo userRepo;
 	@Autowired
 	RangeRepo rr;
 
@@ -57,27 +58,51 @@ public class BuilderController {
 	}
 
 	@GetMapping("/getTag")
-	public Tag getTag(@RequestParam("tagId") int tagId) {
-		return tr.findById(tagId).get();
+	public Tag getTag(@RequestParam("tagId") int tagId){
+		return tagRepo.findById(tagId).get();
 	}
 
 	@PostMapping("/newTag")
-	public Tag createTag(@RequestBody Tag tag) {
-		if (tr.existsById(tag.getId())) {
+	public Tag createTag(@RequestBody Tag tag){
+		if (tagRepo.existsById(tag.getId())) {
 			return null;
 		}
-		tr.save(tag);
+		tagRepo.save(tag);
 		return tag;
 	}
 
 	@GetMapping("/worlds/{id}")
 	public World getWorldById(@PathVariable("id") int id) {
-		return wr.findById(id).get();
+		return worldRepo.findById(id).get();
 	}
 
 	@GetMapping("/worlds")
 	public Iterable<World> getWorlds() {
-		return wr.findAll();
+		return worldRepo.findAll();
+	}
+	
+	@GetMapping("/users/{id}")
+	public User getUserById(@PathVariable("id") int id) {
+		return userRepo.findById(id).get();
+	}
+	
+	@GetMapping("/users")
+	public Iterable<User> getUsers() {
+		return userRepo.findAll();
+	}
+	
+	// get all worlds from a particular user
+	@GetMapping("/userWorlds/{id}")
+	public Iterable<World> getUserWorlds(@PathVariable("id") int id) {
+		Iterable<World> worlds = worldRepo.findAll();
+		ArrayList<World> worldsFromUser = new ArrayList<World>();
+		for (World w : worlds) {
+			if (w.getUser().getId() == id) {
+				worldsFromUser.add(w);
+			}
+		}
+		
+		return worldsFromUser;
 	}
 
 	@GetMapping("/weapons")
@@ -91,20 +116,20 @@ public class BuilderController {
 	}
 
 	@GetMapping("/factions")
-	public Iterable<Faction> getFactions() {
-		return fr.findAll();
+	public Iterable<Faction> getFactions(){
+		return factionRepo.findAll();
 	}
 
 	@GetMapping("/locations")
-	public Iterable<Location> getLocations() {
-		return lr.findAll();
+	public Iterable<Location> getLocations(){
+		return locationRepo.findAll();
 	}
 
 	@GetMapping("/worldFactions/{id}")
 	public Iterable<Faction> getWorldFactionsById(@PathVariable("id") int id) {
 		ArrayList<Faction> factions = new ArrayList<Faction>();
-		for (Faction f : fr.findAll()) {
-			if (f.getWorld().getId() == id) {
+		for(Faction f : factionRepo.findAll()) {
+			if(f.getWorld().getId() == id) {
 				factions.add(f);
 			}
 		}
@@ -114,8 +139,8 @@ public class BuilderController {
 	@GetMapping("/worldLocations/{id}")
 	public Iterable<Location> getWorldLocationsById(@PathVariable("id") int id) {
 		ArrayList<Location> locations = new ArrayList<Location>();
-		for (Location l : lr.findAll()) {
-			if (l.getWorld().getId() == id) {
+		for(Location l : locationRepo.findAll()) {
+			if(l.getWorld().getId() == id) {
 				locations.add(l);
 			}
 		}
@@ -124,8 +149,8 @@ public class BuilderController {
 
 	@GetMapping("user/{username}/{password}")
 	public User getUser(@PathVariable("username") String username, @PathVariable("password") String password) {
-		for (User u : ur.findAll()) {
-			if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+		for(User u : userRepo.findAll()) {
+			if(u.getUsername().equals(username) && u.getPassword().equals(password)) {
 				return u;
 			}
 		}
@@ -135,7 +160,7 @@ public class BuilderController {
 	@PostMapping("/createWorld")
 	public void createWorld(@RequestParam String name, @RequestParam String descriptor, @RequestParam int user_id) {
 		World world = new World();
-		User user = ur.findById(user_id).get();
+		User user = userRepo.findById(user_id).get();
 		world.setName(name);
 		world.setDescriptor(descriptor);
 		world.setUser(user);
@@ -144,9 +169,9 @@ public class BuilderController {
 	
 	@PostMapping("/addTagToWorld")
 	public void addTagToWorld(@RequestParam String name, @RequestParam int world_id) {
-		World world = wr.findById(world_id).get();
+		World world = worldRepo.findById(world_id).get();
 		Tag tag;
-		for (Tag t : tr.findAll()) {
+		for (Tag t : tagRepo.findAll()) {
 			if(t.getName().equals(name)) {
 				List<Tag> tags = world.getTags();
 				for(Tag wt : tags) {
@@ -155,21 +180,21 @@ public class BuilderController {
 					}
 				}
 				world.addTag(t);
-				wr.save(world);
+				worldRepo.save(world);
 				return;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		world.addTag(tag);
-		tr.save(tag);
+		tagRepo.save(tag);
 	}
 	
 	@PostMapping("/addTagToDefense")
 	public void addTagToDefense(@RequestParam String name, @RequestParam int defense_id) {
 		Defense defense = defenserepo.findById(defense_id).get();
 		Tag tag;
-		for(Tag t : tr.findAll()) {
+		for(Tag t : tagRepo.findAll()) {
 			if(t.getName().equals(name)) {
 				List<Tag> tags = defense.getTags();
 				for(Tag dt : tags) {
@@ -185,12 +210,12 @@ public class BuilderController {
 		tag = new Tag();
 		tag.setName(name);
 		defense.addTag(tag);
-		tr.save(tag);
+		tagRepo.save(tag);
 	}
 	
 	@PostMapping("/addTagToFaction")
 	public void addTagToFaction(@RequestParam String name, @RequestParam int faction_id) {
-		Faction faction = fr.findById(faction_id).get();
+		Faction faction = factionRepo.findById(faction_id).get();
 		Tag tag;
 		for(Tag t : tr.findAll()) {
 			if(t.getName().equals(name)) {
@@ -201,21 +226,21 @@ public class BuilderController {
 					}
 				}
 				faction.addTag(t);
-				fr.save(faction);
+				factionRepo.save(faction);
 				return;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		faction.addTag(tag);
-		tr.save(tag);
+		tagRepo.save(tag);
 	}
 	
 	@PostMapping("/addTagToLocation")
 	public void addTagToLocation(@RequestParam String name, @RequestParam int location_id) {
-		Location location = lr.findById(location_id).get();
+		Location location = locationRepo.findById(location_id).get();
 		Tag tag;
-		for(Tag t : tr.findAll()) {
+		for(Tag t : tagRepo.findAll()) {
 			if(t.getName().equals(name)) {
 				List<Tag> tags = location.getTags();
 				for(Tag lt : tags) {
@@ -224,43 +249,43 @@ public class BuilderController {
 					}
 				}
 				location.addTag(t);
-				lr.save(location);
+				locationRepo.save(location);
 				return;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		location.addTag(tag);
-		tr.save(tag);
+		tagRepo.save(tag);
 	}
 
 	@PostMapping("/createLocation")
 	public void createLocation(@RequestParam String name, @RequestParam String descriptor, @RequestParam int world_id) {
 		Location location = new Location();
-		World world = wr.findById(world_id).get();
+		World world = worldRepo.findById(world_id).get();
 		location.setName(name);
 		location.setDescriptor(descriptor);
 		location.setWorld(world);
-		lr.save(location);
+		locationRepo.save(location);
 	}
 
 	@PostMapping("/createFaction")
 	public void createFaction(@RequestParam String name, @RequestParam String descriptor, @RequestParam int population,
 			@RequestParam int world_id) {
 		Faction faction = new Faction();
-		World world = wr.findById(world_id).get();
+		World world = worldRepo.findById(world_id).get();
 		faction.setName(name);
 		faction.setDescriptor(descriptor);
 		faction.setPopulation(population);
 		faction.setWorld(world);
-		fr.save(faction);
+		factionRepo.save(faction);
 	}
 
 	@PostMapping("/createWeapon")
 	public void createWeapon(@RequestParam String name, @RequestParam String descriptor, @RequestParam int range_id,
 			@RequestParam int faction_id) {
 		Weapon weapon = new Weapon();
-		Faction faction = fr.findById(faction_id).get();
+		Faction faction = factionRepo.findById(faction_id).get();
 		Range range = rr.findById(range_id).get();
 		weapon.setName(name);
 		weapon.setDescriptor(descriptor);
