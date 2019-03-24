@@ -1,3 +1,10 @@
-<p>
-  create-faction works!
-</p>
+<form #createFactionForm="ngForm" method="POST" (ngSubmit)="createFaction(createFactionForm);">
+  <label for="name">Faction Name</label>
+  <input type="text" name="name" id="name" ngModel>
+  <label for="description">Faction Description</label>
+  <input type="text" name="descriptor" id="description" ngModel>
+  <label for="population">Faction Population</label>
+  <input type="text" name="population" id="population" ngModel>
+  <input type="submit">
+</form>
+<h2 id="createWorldNotifier">{{notifier}}</h2>

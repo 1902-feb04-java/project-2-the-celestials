@@ -1,8 +1,25 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
 <form #createWorldForm="ngForm" method="POST" (ngSubmit)="createWorld(createWorldForm);">
-  <label for="name">World Name</label>
-  <input type="text" name="name" id="name" ngModel>
-  <label for="description">World Description</label>
-  <input type="text" name="descriptor" id="description" ngModel>
-  <input type="submit">
+  <h4>CREATE W<i class="fas fa-globe-africa"></i>RLD</h4>
+  <br>
+  
+  <label for="name"><strong>World Name</strong></label>
+  <br>
+  <input type="text" name="name" id="name" placeholder="World Name"  ngModel>
+  <br>
+  <br>
+  <br>
+  <!-- <label for="description"><strong>World Description</strong></label> -->
+  <!-- <br> -->
+  <!-- <input type="text" name="descriptor" id="description" placeholder="Description" ngModel> -->
+  <div class="form-group">
+    <label for="description"><strong>World Description</strong></label>
+    <textarea class="form-control" name="descriptor" id="description" rows="5" cols="35" placeholder="Description"  ngModel></textarea>
+  </div>
+  <br>
+  <br>
+  <input type="submit" type="button" class="btn btn-outline-light" value="SUBMIT">
 </form>
 <h2 id="createWorldNotifier">{{notifier}}</h2>
+
