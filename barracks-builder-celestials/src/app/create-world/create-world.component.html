@@ -1,0 +1,8 @@
+<form #createWorldForm="ngForm" method="POST" (ngSubmit)="createWorld(createWorldForm);">
+  <label for="name">World Name</label>
+  <input type="text" name="name" id="name" ngModel>
+  <label for="description">World Description</label>
+  <input type="text" name="descriptor" id="description" ngModel>
+  <input type="submit">
+</form>
+<h2 id="createWorldNotifier">{{notifier}}</h2>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { World } from '../world';
@@ -111,6 +111,21 @@ export class HttpService {
       tap(_ => this.log(`fetched user username=${username} password=${password}`)),
       catchError(this.handleError<User>(`getHero username=${username} password=${password}`))
     );
+  }
+
+  createWorld(name: string, description: string, userId: string) {
+    const url = `http://localhost:8080/build/createWorld`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('user_id', userId);
+
+    this.httpClient.post(url, 
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
   }
 
   /**
