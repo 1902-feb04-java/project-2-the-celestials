@@ -1,3 +1,6 @@
-<p>
-  create-tag works!
-</p>
+<form #createTagForm="ngForm" method="POST" (ngSubmit)="createTag(createTagForm);">
+  <label for="name">Tag Name For World</label>
+  <input type="text" name="name" id="name" ngModel>
+  <input type="submit">
+</form>
+<h2 id="createWorldNotifier">{{notifier}}</h2>
