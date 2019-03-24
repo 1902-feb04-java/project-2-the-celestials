@@ -19,17 +19,17 @@ export class WorldComponent implements OnInit {
   userId: number;
   private sub: any;
 
-  columnsToDisplay = ['name','description','world'];
-  columnsToDisplay1 = ['name','description','world','population'];
-  columnsToDisplay2 = ['name','description'];
+  columnsToDisplay = ['name', 'description', 'world'];
+  columnsToDisplay1 = ['name', 'description', 'world', 'population'];
+  columnsToDisplay2 = ['name', 'description'];
 
-  constructor(private httpService: HttpService, private route : ActivatedRoute) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
-   });
-   this.getWorld();
+    });
+    this.getWorld();
   }
 
   ngOnDestory() {
@@ -39,27 +39,37 @@ export class WorldComponent implements OnInit {
     // const id = +this.route.snapshot.paramMap.get('id');
     this.userId = parseInt(localStorage.getItem("user_id"));
     this.httpService.getWorldById(this.id)
-     .subscribe(world => this.world = world);
+      .subscribe(world => this.world = world);
     this.httpService.getWorldFactionsById(this.id)
       .subscribe(factions => this.factions = factions);
     this.httpService.getWorldLocationsById(this.id)
       .subscribe(locations => this.locations = locations);
   }
 
-  newTag() : void {
+  goToFaction(name: string): void {
+    let factionId;
+    this.factions.forEach(element => {
+      if (element.name === name) {
+        factionId = element.id;
+      }
+    });
+    window.location.href = "/faction/" + factionId;
+  }
+
+  newTag(): void {
     let url = "/createtag";
-    url = url + "?worldId="+this.id;
-    window.location.href= url;
+    url = url + "?worldId=" + this.id;
+    window.location.href = url;
   }
-  newLocation() : void {
+  newLocation(): void {
     let url = "/createlocation";
-    url = url + "?worldId="+this.id;
-    window.location.href= url;
+    url = url + "?worldId=" + this.id;
+    window.location.href = url;
   }
-  newFaction() : void {
+  newFaction(): void {
     let url = "/createfaction";
-    url = url + "?worldId="+this.id;
-    window.location.href= url;
+    url = url + "?worldId=" + this.id;
+    window.location.href = url;
   }
 
   /**
