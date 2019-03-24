@@ -3,35 +3,35 @@
   <h2>Description:
     <span>{{world.descriptor}}</span>
   </h2> -->
-  
-  
+
+<span *ngIf="world">
   <div class="panel panel-primary">
     <!-- <div class="panel-heading">{{world.user.username}}'s world</div> -->
     <div class="panel-body">
       <!-- <h3> User name: {{world.user.username}}</h3> -->
-      <h3>
+      <h1>
         {{world.name}}
         <span style="font-size:50%"> by {{world.user.username}} </span>
-      </h3>
+      </h1>
       <em>"{{world.descriptor}}"</em>
-     <br>
-     <br>
-     <h6>Tags:</h6>
-      <span id="header_tags" *ngFor="let tag of world.tags">  
-      <i class="fas fa-tag"></i>  {{tag.name}}
+      <br>
+      <br>
+      <h6>Tags:</h6>
+      <span id="header_tags" *ngFor="let tag of world.tags">
+        <i class="fas fa-tag"></i> {{tag.name}}
       </span>
       <span *ngIf="userId == world.user.id">
         <i class="fas fa-plus-circle" (click)=(newTag())> New Tag </i>
       </span>
     </div>
   </div>
-  
-<br>
+
+  <br>
   <!-- <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
     <span><i class="fas fa-tag"></i>{{tag.name}}</span>
   </h2> -->
-<!-- </div> -->
-  
+  <!-- </div> -->
+
 
   <table class="table table-bordered table-hover" mat-table [dataSource]="locations">
 
@@ -39,16 +39,16 @@
       <th mat-header-cell *matHeaderCellDef>Location Name</th>
       <td mat-cell *matCellDef="let element"><i class="fas fa-map-marked-alt"></i> {{element.name}} </td>
     </ng-container>
-     <ng-container matColumnDef="description"> 
+    <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Description </th>
       <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
-    </ng-container> 
+    </ng-container>
     <ng-container matColumnDef="world">
       <th mat-header-cell *matHeaderCellDef> Native World </th>
       <td mat-cell *matCellDef="let element">{{element.world.name}} </td>
-    </ng-container> 
-  
-  
+    </ng-container>
+
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
   </table>
@@ -64,10 +64,10 @@
       <th mat-header-cell *matHeaderCellDef>Faction Name</th>
       <td mat-cell *matCellDef="let element"><i class="fas fa-users"></i>{{element.name}} </td>
     </ng-container>
-     <ng-container matColumnDef="description"> 
+    <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> description </th>
       <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
-    </ng-container> 
+    </ng-container>
     <ng-container matColumnDef="world">
       <th mat-header-cell *matHeaderCellDef> Native World </th>
       <td mat-cell *matCellDef="let element">{{element.world.name}} </td>
@@ -75,8 +75,8 @@
     <ng-container matColumnDef="population">
       <th mat-header-cell *matHeaderCellDef> population </th>
       <td mat-cell *matCellDef="let element">{{element.population}} </td>
-    </ng-container> 
-  
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay1"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay1"></tr>
   </table>
@@ -84,3 +84,4 @@
   <span *ngIf="userId == world.user.id">
     <i class="fas fa-plus-circle" (click)=(newFaction())> New Faction </i>
   </span>
+</span>
