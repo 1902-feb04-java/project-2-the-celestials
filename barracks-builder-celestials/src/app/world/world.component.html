@@ -78,7 +78,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay1"></tr>
-    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay1"></tr>
+    <tr mat-row (click)='goToFaction(myRowData.name)' *matRowDef="let myRowData; columns: columnsToDisplay1" ></tr>
   </table>
 
   <span *ngIf="userId == world.user.id">
