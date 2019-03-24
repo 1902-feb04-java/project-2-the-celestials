@@ -150,6 +150,20 @@ export class HttpService {
       }).subscribe();
   }
 
+  createTagForLocation(name: string, factionId: string) {
+    const url = `http://localhost:8080/build/addTagToFaction`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('world_id', factionId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
   createLocation(name: string, description: string, worldId: string) {
     const url = `http://localhost:8080/build/createLocation`;
     const body = new HttpParams()
