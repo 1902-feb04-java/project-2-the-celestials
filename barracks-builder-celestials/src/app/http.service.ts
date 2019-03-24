@@ -20,8 +20,9 @@ export class HttpService {
   //private worldsUrl = "build/worlds"; // URL to spring project
   private worldsUrl = this.baseUrl + "/worlds"; // URL to spring project
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a HttpService message */
   private log(message: string) {
+    //alert(message);
   }
 
   /** GET world from the server by Id */
@@ -93,7 +94,14 @@ export class HttpService {
     const url = `http://localhost:8080/build/worldFactions/${id}`;
     return this.httpClient.get<Faction[]>(url).pipe(
       tap(_ => this.log(`fetched world id=${id}`)),
-      catchError(this.handleError<Faction[]>(`getHero id=${id}`))
+      catchError(this.handleError<Faction[]>(`getWorldFactionsById id=${id}`))
+    );
+  }
+  getFactionById(id: number): Observable<Faction>{
+    const url = this.baseUrl + '/factions/'+id;
+    return this.httpClient.get<Faction>(url).pipe(
+      tap(_ => this.log(`fetched faction id=${id}`)),
+      catchError(this.handleError<Faction>(`getFactionById id=${id}`))
     );
   }
 
@@ -121,6 +129,51 @@ export class HttpService {
     .set('user_id', userId);
 
     this.httpClient.post(url, 
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createTagForWorld(name: string, worldId: string) {
+    const url = `http://localhost:8080/build/addTagToWorld`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createLocation(name: string, description: string, worldId: string) {
+    const url = `http://localhost:8080/build/createLocation`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createFaction(name: string, description: string, population: string, worldId: string) {
+    const url = `http://localhost:8080/build/createFaction`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('population', population)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
       body.toString(),
       {
         headers: new HttpHeaders()
