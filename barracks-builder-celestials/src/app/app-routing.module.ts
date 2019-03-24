@@ -10,6 +10,9 @@ import { LocationComponent } from './location/location.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { CreateWorldComponent } from './create-world/create-world.component';
+import { CreateLocationComponent } from './create-location/create-location.component';
+import { CreateFactionComponent } from './create-faction/create-faction.component';
+import { CreateTagComponent } from './create-tag/create-tag.component';
 
 
 
@@ -25,8 +28,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'createworld', component: CreateWorldComponent}
-
+  
+  { path: 'createworld', component: CreateWorldComponent},
+  { path: 'createlocation', component: CreateLocationComponent},
+  { path: 'createfaction', component: CreateFactionComponent},
+  { path: 'createtag', component: CreateTagComponent}
 
 ];
 

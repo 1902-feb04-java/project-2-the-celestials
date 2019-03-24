@@ -6,13 +6,13 @@
   
   
   <div class="panel panel-primary">
-    <div class="panel-heading">{{world.user.username}}'s world</div>
+    <!-- <div class="panel-heading">{{world.user.username}}'s world</div> -->
     <div class="panel-body">
       <!-- <h3> User name: {{world.user.username}}</h3> -->
-      <br>
-      <br>
-      
-      <h3>{{world.name}}</h3>
+      <h3>
+        {{world.name}}
+        <span style="font-size:50%"> by {{world.user.username}} </span>
+      </h3>
       <em>"{{world.descriptor}}"</em>
      <br>
      <br>
@@ -20,45 +20,17 @@
       <span id="header_tags" *ngFor="let tag of world.tags">  
       <i class="fas fa-tag"></i>  {{tag.name}}
       </span>
+      <span *ngIf="userId == world.user.id">
+        <i class="fas fa-plus-circle" (click)=(newTag())> New Tag </i>
+      </span>
     </div>
   </div>
+  
+<br>
   <!-- <h2 id="header_tags" *ngFor="let tag of world.tags">Tags:
     <span><i class="fas fa-tag"></i>{{tag.name}}</span>
   </h2> -->
 <!-- </div> -->
-
-
-
-<!-- <div id="factions_and_locations_div">
-  <div *ngIf="factions">
-    <h2>Factions</h2>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Population</th>
-      </tr>
-      <tr class="table_row" *ngFor="let faction of factions">
-        <td>{{faction.name}}</td>
-        <td>{{faction.descriptor}}</td>
-        <td>{{faction.population}}</td>
-      </tr>
-    </table>
-  </div>
-  <div *ngIf="locations">
-    <h2>Locations</h2>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-      <tr class="table_row" *ngFor="let location of locations">
-        <td>{{location.name}}</td>
-        <td>{{location.descriptor}}</td>
-      </tr>
-    </table>
-  </div>  -->
- 
   
 
   <table class="table table-bordered table-hover" mat-table [dataSource]="locations">
@@ -80,7 +52,12 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
   </table>
-  
+
+  <span *ngIf="userId == world.user.id">
+    <i class="fas fa-plus-circle" (click)=(newLocation())> New Location </i>
+  </span>
+
+
   <table class="table table-bordered table-hover" mat-table [dataSource]="factions">
 
     <ng-container matColumnDef="name">
@@ -104,4 +81,6 @@
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay1"></tr>
   </table>
 
-  
+  <span *ngIf="userId == world.user.id">
+    <i class="fas fa-plus-circle" (click)=(newFaction())> New Faction </i>
+  </span>
