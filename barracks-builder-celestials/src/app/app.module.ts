@@ -17,6 +17,7 @@ import { DefenseComponent } from './defense/defense.component';
 import { FactionComponent } from './faction/faction.component';
 import { LocationComponent } from './location/location.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreateWorldComponent } from './create-world/create-world.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileComponent } from './profile/profile.component';
     DefenseComponent,
     FactionComponent,
     LocationComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateWorldComponent
 
   ],
   imports: [
