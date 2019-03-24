@@ -43,7 +43,6 @@ export class WorldsTableComponent implements OnInit {
   }
 
   newWorld(): void {
-    alert('it works!'); // test
-    //window.location.href= "/";
+    window.location.href = "/createworld";
   }
 }
