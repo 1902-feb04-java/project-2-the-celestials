@@ -128,6 +128,51 @@ export class HttpService {
       }).subscribe();
   }
 
+  createTagForWorld(name: string, worldId: string) {
+    const url = `http://localhost:8080/build/addTagToWorld`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createLocation(name: string, description: string, worldId: string) {
+    const url = `http://localhost:8080/build/createLocation`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createFaction(name: string, description: string, population: string, worldId: string) {
+    const url = `http://localhost:8080/build/createFaction`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('population', population)
+    .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

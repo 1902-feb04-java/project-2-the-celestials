@@ -1,3 +1,8 @@
-<p>
-  create-location works!
-</p>
+<form #createLocationForm="ngForm" method="POST" (ngSubmit)="createLocation(createLocationForm);">
+  <label for="name">Location Name</label>
+  <input type="text" name="name" id="name" ngModel>
+  <label for="description">Location Description</label>
+  <input type="text" name="descriptor" id="description" ngModel>
+  <input type="submit">
+</form>
+<h2 id="createWorldNotifier">{{notifier}}</h2>
