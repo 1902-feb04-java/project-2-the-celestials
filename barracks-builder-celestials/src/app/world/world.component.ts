@@ -48,6 +48,22 @@ export class WorldComponent implements OnInit {
       .subscribe(locations => this.locations = locations);
   }
 
+  newTag() : void {
+    let url = "/createtag";
+    url = url + "?worldId="+this.id;
+    window.location.href= url;
+  }
+  newLocation() : void {
+    let url = "/createlocation";
+    url = url + "?worldId="+this.id;
+    window.location.href= url;
+  }
+  newFaction() : void {
+    let url = "/createfaction";
+    url = url + "?worldId="+this.id;
+    window.location.href= url;
+  }
+
   /**
    * World
    */
