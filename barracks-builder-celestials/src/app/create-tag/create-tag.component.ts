@@ -9,9 +9,9 @@ import { HttpService } from '../http.service';
   styleUrls: ['./create-tag.component.css']
 })
 export class CreateTagComponent implements OnInit {
-  worldId: number;
+  worldId: string;
   notifier: string;
-
+  
   constructor(private route : ActivatedRoute, private httpService: HttpService) { }
 
   ngOnInit() {
@@ -23,9 +23,10 @@ export class CreateTagComponent implements OnInit {
 
   createTag(form: NgForm) {
     let name: string = form.controls['name'].value;
+    this.httpService.createTagForWorld(name, this.worldId);
+    this.notifier = "Thank you for creating a tag for your world!";
     let description: string = form.controls['descriptor'].value;
     let userId: string = localStorage.getItem("user_id");
     this.httpService.createWorld(name, description, userId);
-    this.notifier = "Thank you for creating a world!";
   }
 }
