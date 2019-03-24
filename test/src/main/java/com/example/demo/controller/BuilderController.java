@@ -122,6 +122,11 @@ public class BuilderController {
 	public Iterable<Faction> getFactions() {
 		return factionRepo.findAll();
 	}
+	
+	@GetMapping("/factions/{id}")
+	public Faction getFactionById(@PathVariable("id") int id) {
+		return factionRepo.findById(id).get();
+	}
 
 	@GetMapping("/locations")
 	public Iterable<Location> getLocations() {

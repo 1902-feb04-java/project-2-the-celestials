@@ -20,8 +20,9 @@ export class HttpService {
   //private worldsUrl = "build/worlds"; // URL to spring project
   private worldsUrl = this.baseUrl + "/worlds"; // URL to spring project
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a HttpService message */
   private log(message: string) {
+    //alert(message);
   }
 
   /** GET world from the server by Id */
@@ -93,7 +94,14 @@ export class HttpService {
     const url = `http://localhost:8080/build/worldFactions/${id}`;
     return this.httpClient.get<Faction[]>(url).pipe(
       tap(_ => this.log(`fetched world id=${id}`)),
-      catchError(this.handleError<Faction[]>(`getHero id=${id}`))
+      catchError(this.handleError<Faction[]>(`getWorldFactionsById id=${id}`))
+    );
+  }
+  getFactionById(id: number): Observable<Faction>{
+    const url = this.baseUrl + '/factions/'+id;
+    return this.httpClient.get<Faction>(url).pipe(
+      tap(_ => this.log(`fetched faction id=${id}`)),
+      catchError(this.handleError<Faction>(`getFactionById id=${id}`))
     );
   }
 

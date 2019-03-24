@@ -21,6 +21,7 @@ import { CreateWorldComponent } from './create-world/create-world.component';
 import { CreateLocationComponent } from './create-location/create-location.component';
 import { CreateFactionComponent } from './create-faction/create-faction.component';
 import { CreateTagComponent } from './create-tag/create-tag.component';
+import { UserFactionComponent } from './user-faction/user-faction.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CreateTagComponent } from './create-tag/create-tag.component';
     CreateWorldComponent,
     CreateLocationComponent,
     CreateFactionComponent,
-    CreateTagComponent
+    CreateTagComponent,
+    UserFactionComponent
 
   ],
   imports: [
