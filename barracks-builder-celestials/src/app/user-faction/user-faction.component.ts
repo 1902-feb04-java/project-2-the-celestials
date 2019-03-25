@@ -14,6 +14,9 @@ export class UserFactionComponent implements OnInit {
   faction: Faction;
   private sub: any;
 
+  columnsToDisplayWeapons = ['name', 'description','range'];
+  columnsToDisplayDefenses = ['name', 'description','slot'];
+
   constructor(private httpService : HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -27,5 +30,25 @@ export class UserFactionComponent implements OnInit {
     this.userId = parseInt(localStorage.getItem("user_id"));
     this.httpService.getFactionById(this.id)
      .subscribe(faction => this.faction = faction);
+  }
+
+  goToWeapon(name: string): void {
+    let weaponId;
+    this.faction.weapons.forEach(element => {
+      if (element.name === name) {
+        weaponId = element.id;
+      }
+    });
+    window.location.href = "/weapon/" + weaponId + "?userId="+this.faction.world.user.id;
+  }
+
+  goToDefense(name: string): void {
+    let defenseId;
+    this.faction.defenses.forEach(element => {
+      if (element.name === name) {
+        defenseId = element.id;
+      }
+    });
+    window.location.href = "/defense/" + defenseId + "?userId="+this.faction.world.user.id;
   }
 }

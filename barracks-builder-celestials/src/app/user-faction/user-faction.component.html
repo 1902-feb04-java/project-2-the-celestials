@@ -8,6 +8,8 @@
       </h1>
       <em>"{{faction.descriptor}}"</em>
       <br>
+      <span>Population: {{faction.population | number}}</span>
+      <br>
       <br>
       <h6>Tags:</h6>
       <span id="header_tags" *ngFor="let tag of faction.tags">
@@ -21,14 +23,54 @@
 
   <br>
 
-  <!-- <span *ngFor="faction.weapons"> -->
 
-  <!-- </span> -->
+  <!-- Weapons -->
+  <table class="table table-bordered table-hover" mat-table [dataSource]="faction.weapons">
 
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Weapon Name</th>
+      <td mat-cell *matCellDef="let element"><i class="fas fa-crosshairs"></i> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="range">
+      <th mat-header-cell *matHeaderCellDef> Range </th>
+      <td mat-cell *matCellDef="let element"> {{element.range.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWeapons"></tr>
+    <tr mat-row (click)='goToWeapon(myRowData.name)' *matRowDef="let myRowData; columns: columnsToDisplayWeapons"></tr>
+  </table>
+
+  <!-- new weapon -->
   <span *ngIf="userId == faction.world.user.id">
     <i class="fas fa-plus-circle" (click)=(newWeapon())> New Weapon </i>
   </span>
 
+
+  <!-- Defenses -->
+  <table class="table table-bordered table-hover" mat-table [dataSource]="faction.defenses">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Defense Name</th>
+      <td mat-cell *matCellDef="let element"><i class="fas fa-shield-alt"></i>{{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.descriptor}} </td>
+    </ng-container>
+    <ng-container matColumnDef="slot">
+      <th mat-header-cell *matHeaderCellDef> Body Slot </th>
+      <td mat-cell *matCellDef="let element"> {{element.slot.name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayDefenses"></tr>
+    <tr mat-row (click)='goToDefense(myRowData.name)' *matRowDef="let myRowData; columns: columnsToDisplayDefenses" ></tr>
+  </table>
+
+  <!-- new defense -->
   <span *ngIf="userId == faction.world.user.id">
     <i class="fas fa-plus-circle" (click)=(newDefense())> New Defense </i>
   </span>
