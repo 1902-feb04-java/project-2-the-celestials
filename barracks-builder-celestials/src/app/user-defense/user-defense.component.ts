@@ -37,7 +37,9 @@ export class UserDefenseComponent implements OnInit {
   }
 
   newTag(): void {
-    alert("add tag here");
+    let url = "createtagfordefense";
+    url = url + "?defenseId=" + this.id;
+    window.location.href = url;
   }
 
 }
