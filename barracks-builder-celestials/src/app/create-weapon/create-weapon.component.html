@@ -1,4 +1,4 @@
-<form #createWeaponForm="ngForm" method="POST" (ngSubmit)="createWeapon(createWeaponForm);" id="weaponForm">
+<!-- <form #createWeaponForm="ngForm" method="POST" (ngSubmit)="createWeapon(createWeaponForm);" id="weaponForm">
   <label for="name">Weapon Name</label>
   <input type="text" name="name" id="name" ngModel>
   <label for="description">Weapon Description</label>
@@ -9,4 +9,36 @@
   </select>
   <input type="submit">
 </form>
-<h2 id="createWorldNotifier">{{notifier}}</h2>
+<h2 id="createWorldNotifier">{{notifier}}</h2> -->
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+<form #createWeaponForm="ngForm" method="POST" (ngSubmit)="createWeapon(createWeaponForm)">
+  <h4>CREATE WEAP<i class="fas fa-skull"></i>N</h4>
+  <br>
+  
+  <label for="name"><strong>Weapon Name</strong></label>
+  <br>
+  <input type="text" name="name" id="name" placeholder="Weapon Name"  ngModel>
+  <br>
+  <br>
+  <br>
+  <!-- <label for="description"><strong>World Description</strong></label> -->
+  <!-- <br> -->
+  <!-- <input type="text" name="descriptor" id="description" placeholder="Description" ngModel> -->
+  <div class="form-group">
+    <label for="description"><strong>Weapon Description</strong></label>
+    <textarea class="form-control rounded-0" name="descriptor" id="description" rows="5" placeholder="Description"  ngModel></textarea>
+  </div>
+  <br>
+  <label for="range"><strong> Range: </strong></label>
+  <select *ngIf="ranges" name="range_id" form="weaponForm" ngModel>
+      <option *ngFor="let range of ranges" value="{{range.id}}">{{range.name}}</option>
+  </select>
+  <br>
+  <input type="submit"class="btn btn-outline-light" value="SUBMIT" ngModel>
+</form>
+<br>
+  <br>
+<h6 id="createLocationNotifier">{{notifier}}</h6>
