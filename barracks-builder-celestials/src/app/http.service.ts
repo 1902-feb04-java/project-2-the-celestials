@@ -156,19 +156,22 @@ export class HttpService {
     );
   }
 
-  createWorld(name: string, description: string, userId: string) {
+  createWorld(name: string, description: string, userId: string): Observable<World> {
     const url = `http://localhost:8080/build/createWorld`;
     const body = new HttpParams()
     .set('name', name)
     .set('descriptor', description)
     .set('user_id', userId);
 
-    this.httpClient.post(url, 
+    return this.httpClient.post<World>(url, 
       body.toString(),
       {
         headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
-      }).subscribe();
+      }).pipe(
+        tap(_ => this.log(`created world =${name}`)),
+        catchError(this.handleError<World>(`createWorld name=${name}`))
+      );
   }
 
   createTagForWorld(name: string, worldId: string) {

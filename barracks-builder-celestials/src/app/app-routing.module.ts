@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
   
   { path: 'createworld', component: CreateWorldComponent},
   { path: 'createlocation', component: CreateLocationComponent},
