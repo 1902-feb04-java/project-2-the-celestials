@@ -1,24 +1,32 @@
-<div>
-  
-  <br>
-  <br>
-  <br>
+
   <form #userForm="ngForm" method="GET" (ngSubmit)="isValidUser(userForm);">
-   <h1>Login</h1>
+   
+    <h1>Login</h1>
    <br>
  
     <label for="username">Username</label>
+    <br>
     <input ngRequired="true" type="text" name="username" id="username" placeholder="username" ngModel>
-    <label for="password">Password</label>
+    <br>
+  <label for="password">Password</label>
+    <br>
+
     <input ngRequired="true" type="password" required name="password" id="password" placeholder="password" ngModel>
+    <br>
+    <br>
+  
+
+
     <input type="submit" class="btn btn-outline-light" value="SUBMIT" ngModel>
   </form>
+
   <div *ngIf="submitted">
     <div *ngIf="user; else notValid">
-      <h1>{{setUserInSessionStorage(user.id)}} Hello, {{user.username}}</h1>
+      <br>
+      <h6>{{setUserInSessionStorage(user.id)}} Hello, {{user.username}}</h6>
     </div>
     <ng-template #notValid>
-      <h1>Sorry, your username and/or password is incorrect</h1>
+      <br>
+      <h6>Sorry, your username and/or password is incorrect</h6>
     </ng-template>
   </div>
-</div>
