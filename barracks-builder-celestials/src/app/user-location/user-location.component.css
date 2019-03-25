@@ -1,0 +1,8 @@
+div, span, h4, i{
+    text-align: center;
+    color: white
+
+}
+.clickable {
+    cursor: pointer;
+}

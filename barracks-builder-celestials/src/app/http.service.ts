@@ -104,6 +104,13 @@ export class HttpService {
         catchError(this.handleError<Location[]>('getLocations', []))
       );
   }
+  getLocationById(id: number): Observable<Location>{
+    const url = this.baseUrl + '/locations/'+id;
+    return this.httpClient.get<Location>(url).pipe(
+      tap(_ => this.log(`fetched location id=${id}`)),
+      catchError(this.handleError<Location>(`getLocationById id=${id}`))
+    );
+  }
   getRanges(): Observable<Range[]> {
     return this.httpClient.get<Range[]>(this.baseUrl + '/ranges')
       .pipe(

@@ -22,4 +22,13 @@ columnsToDisplay = ['name', 'description','world'];
     this.httpService.getLocations().subscribe(locations => this.locations = locations);
   }
 
+  goToLocation(name: string): void {
+    let locationId;
+    this.locations.forEach(element => {
+      if (element.name === name) {
+        locationId = element.id;
+      }
+    });
+    window.location.href = "/location/" + locationId;
+  }
 }

@@ -32,5 +32,5 @@
 
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  <tr mat-row (click)='goToFaction(myRowData.name)' *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
 </table>

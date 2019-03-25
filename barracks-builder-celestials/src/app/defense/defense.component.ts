@@ -20,4 +20,13 @@ columnsToDisplay = ['name','description','slot'];
     this.httpService.getDefenses().subscribe(defenses => this.defenses = defenses);
   }
 
+  goToDefense(name: string): void {
+    let defenseId;
+    this.defenses.forEach(element => {
+      if (element.name === name) {
+        defenseId = element.id;
+      }
+    });
+    window.location.href = "/defense/" + defenseId;
+  }
 }
