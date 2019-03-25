@@ -32,6 +32,19 @@
     <textarea class="form-control rounded-0" name="descriptor" id="description" rows="5" placeholder="Description"  ngModel></textarea>
   </div>
   <br>
+  <div class="alert alert-light" role="alert">
+    <h4>Ranges Explanation</h4>
+    
+    Hand: Its useful for attacking something within your reach, no further
+    <br>
+    Close: Its useful for attacking something at arms reach, plus a feet or two
+    <br>
+    Reach: Its useful for attacking something several feet away - maybe as far as ten
+    <br>
+    Near: Its useful for attacking if you can see the whites of their eyes
+    <br>
+    Far: Its useful for attacking something in shouting distance
+  </div>
   <label for="range"><strong> Range: </strong></label>
   <select *ngIf="ranges" name="range_id" form="weaponForm" ngModel>
       <option *ngFor="let range of ranges" value="{{range.id}}">{{range.name}}</option>
