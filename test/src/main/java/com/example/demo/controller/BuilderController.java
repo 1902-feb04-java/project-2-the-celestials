@@ -112,10 +112,20 @@ public class BuilderController {
 	public Iterable<Weapon> getWeapons() {
 		return weaponRepo.findAll();
 	}
+	
+	@GetMapping("/weapons/{id}")
+	public Weapon getWeaponById(@PathVariable("id") int id) {
+		return weaponRepo.findById(id).get();
+	}
 
 	@GetMapping("/defenses")
 	public Iterable<Defense> getDefenses() {
 		return defenseRepo.findAll();
+	}
+	
+	@GetMapping("/defenses/{id}")
+	public Defense getDefenseById(@PathVariable("id") int id) {
+		return defenseRepo.findById(id).get();
 	}
 
 	@GetMapping("/factions")

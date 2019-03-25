@@ -69,12 +69,26 @@ export class HttpService {
         catchError(this.handleError<Weapon[]>('getWeapons', []))
       );
   }
+  getWeaponById(id: number): Observable<Weapon>{
+    const url = this.baseUrl + '/weapons/'+id;
+    return this.httpClient.get<Weapon>(url).pipe(
+      tap(_ => this.log(`fetched weapon id=${id}`)),
+      catchError(this.handleError<Weapon>(`getWeaponById id=${id}`))
+    );
+  }
   getDefenses(): Observable<Defense[]> {
     return this.httpClient.get<Defense[]>(this.baseUrl + "/defenses")
       .pipe(
         tap(_ => this.log('fetched defenses')),
         catchError(this.handleError<Defense[]>('getDefenses', []))
       );
+  }
+  getDefenseById(id: number): Observable<Defense>{
+    const url = this.baseUrl + '/defenses/'+id;
+    return this.httpClient.get<Defense>(url).pipe(
+      tap(_ => this.log(`fetched defense id=${id}`)),
+      catchError(this.handleError<Defense>(`getDefenseById id=${id}`))
+    );
   }
   getFactions(): Observable<Faction[]> {
     return this.httpClient.get<Faction[]>(this.baseUrl + "/factions")
