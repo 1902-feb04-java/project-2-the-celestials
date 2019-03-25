@@ -220,6 +220,20 @@ export class HttpService {
       }).subscribe();
   }
 
+  createTagForLocation(name: string, locationId: string) {
+    const url = 'http://localhost:8080/build/addTagToLocation';
+    const body = new HttpParams()
+    .set('name', name)
+    .set('location_id', locationId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
   createLocation(name: string, description: string, worldId: string) {
     const url = `http://localhost:8080/build/createLocation`;
     const body = new HttpParams()

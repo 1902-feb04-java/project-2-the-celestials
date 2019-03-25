@@ -21,6 +21,7 @@ import { UserWeaponComponent } from './user-weapon/user-weapon.component';
 import { UserDefenseComponent } from './user-defense/user-defense.component';
 import { CreateTagWeaponComponent } from './create-tag-weapon/create-tag-weapon.component';
 import { CreateTagDefenseComponent } from './create-tag-defense/create-tag-defense.component';
+import { CreateTagLocationComponent } from './create-tag-location/create-tag-location.component';
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
   { path: 'createtag', component: CreateTagComponent},
   { path: 'createtagforfaction', component: CreateTagFactionComponent},
   { path: 'createtagforweapon', component: CreateTagWeaponComponent},
-  { path: 'createtagfordefense', component: CreateTagDefenseComponent}
+  { path: 'createtagfordefense', component: CreateTagDefenseComponent},
+  { path: 'createtagforlocation', component: CreateTagLocationComponent}
 
 ];
 
