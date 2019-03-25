@@ -1,0 +1,26 @@
+<!-- <form #createTagForm="ngForm" method="POST" (ngSubmit)="createTag(createTagForm);">
+    <label for="name">Tag Name For Defense</label>
+    <input type="text" name="name" id="name" ngModel>
+    <input type="submit">
+  </form>
+  <h2 id="createWorldNotifier">{{notifier}}</h2> -->
+
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+<form #createTagForm="ngForm" method="POST" (ngSubmit)="createTag(createTagForm);">
+  <h4>CREATE <i class="fas fa-shield-alt"></i>DEFENSE<i class="fas fa-shield-alt"></i> TAG<i class="fas fa-tags"></i></h4>
+  <br>
+  
+  <label for="name"><strong>Tag Name</strong></label>
+  <br>
+  <input type="text" name="name" id="name" placeholder="Tag Name"  ngModel>
+  <br>
+  <br>
+  <br>
+  <br>
+  <input type="submit"class="btn btn-outline-light" value="SUBMIT" ngModel>
+</form>
+<br>
+  <br>
+<h6 id="createLocationNotifier">{{notifier}}</h6>

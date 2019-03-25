@@ -1,0 +1,67 @@
+/* div {
+    text-align: center;
+}
+
+h1 span {
+    font-size: 25px;
+}
+
+h2 span {
+    font-size: 20px;
+}
+
+#header_tags span {
+    background-color: lightblue;
+    padding: 10px;
+    margin-right: 15px;
+    border: 1px solid black;
+}
+
+#factions_and_locations_div {
+    width: 100%;
+    display: flex;
+}
+
+#factions_and_locations_div div {
+    width: 50%;
+}
+
+#factions_and_locations_div div table{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#factions_and_locations_div div h2 {
+    line-height: 0px;
+}
+
+th {
+    background-color: lightblue;
+}
+
+.table_row {
+    cursor: pointer;
+}
+
+.table_row:hover {
+    background-color: lightblue;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px 15px;
+    text-align: center;
+} */
+div, span, h4, i{
+    text-align: center;
+    color: white
+
+}
+
+.clickable {
+    cursor: pointer;
+}
