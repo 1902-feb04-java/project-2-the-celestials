@@ -152,6 +152,11 @@ public class BuilderController {
 	public Iterable<Location> getLocations() {
 		return locationRepo.findAll();
 	}
+	
+	@GetMapping("/locations/{id}")
+	public Location getLocationsById(@PathVariable("id") int id) {
+		return locationRepo.findById(id).get();
+	}
 
 	@GetMapping("/worldFactions/{id}")
 	public Iterable<Faction> getWorldFactionsById(@PathVariable("id") int id) {

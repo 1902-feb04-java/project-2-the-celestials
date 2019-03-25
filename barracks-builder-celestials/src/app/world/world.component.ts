@@ -46,6 +46,16 @@ export class WorldComponent implements OnInit {
       .subscribe(locations => this.locations = locations);
   }
 
+  goToLocation(name: string): void {
+    let locationId;
+    this.locations.forEach(element => {
+      if (element.name === name) {
+        locationId = element.id;
+      }
+    });
+    window.location.href = "/location/" + locationId;
+  }
+
   goToFaction(name: string): void {
     let factionId;
     this.factions.forEach(element => {
