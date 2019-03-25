@@ -1,0 +1,12 @@
+<form #createWeaponForm="ngForm" method="POST" (ngSubmit)="createWeapon(createWeaponForm);" id="weaponForm">
+  <label for="name">Weapon Name</label>
+  <input type="text" name="name" id="name" ngModel>
+  <label for="description">Weapon Description</label>
+  <input type="text" name="descriptor" id="description" ngModel>
+  <label for="range">Weapon Range</label>
+  <select *ngIf="ranges" name="range_id" form="weaponForm" ngModel>
+      <option *ngFor="let range of ranges" value="{{range.id}}">{{range.name}}</option>
+  </select>
+  <input type="submit">
+</form>
+<h2 id="createWorldNotifier">{{notifier}}</h2>

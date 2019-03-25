@@ -123,6 +123,16 @@ public class BuilderController {
 		return factionRepo.findAll();
 	}
 	
+	@GetMapping("/ranges")
+	public Iterable<Range> getRanges() {
+		return rangeRepo.findAll();
+	}
+	
+	@GetMapping("/bodyslots")
+	public Iterable<BodySlot> getBodySlots() {
+		return bodyslotRepo.findAll();
+	}
+	
 	@GetMapping("/factions/{id}")
 	public Faction getFactionById(@PathVariable("id") int id) {
 		return factionRepo.findById(id).get();

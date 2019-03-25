@@ -1,0 +1,12 @@
+<form #createDefenseForm="ngForm" method="POST" (ngSubmit)="createDefense(createDefenseForm);" id="defenseForm">
+    <label for="name">Defense Name</label>
+    <input type="text" name="name" id="name" ngModel>
+    <label for="description">Defense Description</label>
+    <input type="text" name="descriptor" id="description" ngModel>
+    <label for="range">Defense Body Slot</label>
+    <select *ngIf="bodySlots" name="bodyslot_id" form="defenseForm" ngModel>
+        <option *ngFor="let bodyslot of bodySlots" value="{{bodyslot.id}}">{{bodyslot.name}}</option>
+    </select>
+    <input type="submit">
+  </form>
+  <h2 id="createWorldNotifier">{{notifier}}</h2>

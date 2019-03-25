@@ -14,7 +14,7 @@
         <i class="fas fa-tag"></i> {{tag.name}}
       </span>
       <span *ngIf="userId == faction.world.user.id">
-        <i class="fas fa-plus-circle" (click)=(newTag())> New Tag </i>
+        <i class="fas fa-plus-circle clickable" (click)=(newTag())> New Tag </i>
       </span>
     </div>
   </div>
@@ -26,10 +26,10 @@
   <!-- </span> -->
 
   <span *ngIf="userId == faction.world.user.id">
-    <i class="fas fa-plus-circle" (click)=(newWeapon())> New Weapon </i>
+    <i class="fas fa-plus-circle clickable" (click)=(newWeapon())> New Weapon </i>
   </span>
 
   <span *ngIf="userId == faction.world.user.id">
-    <i class="fas fa-plus-circle" (click)=(newDefense())> New Defense </i>
+    <i class="fas fa-plus-circle clickable" (click)=(newDefense())> New Defense </i>
   </span>
 </span>

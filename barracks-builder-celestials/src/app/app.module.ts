@@ -22,6 +22,9 @@ import { CreateLocationComponent } from './create-location/create-location.compo
 import { CreateFactionComponent } from './create-faction/create-faction.component';
 import { CreateTagComponent } from './create-tag/create-tag.component';
 import { UserFactionComponent } from './user-faction/user-faction.component';
+import { CreateTagFactionComponent } from './create-tag-faction/create-tag-faction.component';
+import { CreateWeaponComponent } from './create-weapon/create-weapon.component';
+import { CreateDefenseComponent } from './create-defense/create-defense.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { UserFactionComponent } from './user-faction/user-faction.component';
     CreateLocationComponent,
     CreateFactionComponent,
     CreateTagComponent,
-    UserFactionComponent
+    UserFactionComponent,
+    CreateTagFactionComponent,
+    CreateWeaponComponent,
+    CreateDefenseComponent
 
   ],
   imports: [
