@@ -1,0 +1,6 @@
+<form #createTagForm="ngForm" method="POST" (ngSubmit)="createTag(createTagForm);">
+  <label for="name">Tag Name</label>
+  <input type="text" name="name" id="name" ngModel>
+  <input type="submit">
+</form>
+<h6>{{notifier}}</h6>
