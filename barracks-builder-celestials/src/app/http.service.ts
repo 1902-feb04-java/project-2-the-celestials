@@ -192,6 +192,34 @@ export class HttpService {
       }).subscribe();
   }
 
+  createTagForWeapon(name: string, weaponId: string) {
+    const url = 'http://localhost:8080/build/addTagToWeapon';
+    const body = new HttpParams()
+    .set('name', name)
+    .set('weapon_id', weaponId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createTagForDefense(name: string, defenseId: string) {
+    const url = 'http://localhost:8080/build/addTagToDefense';
+    const body = new HttpParams()
+    .set('name', name)
+    .set('defense_id', defenseId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
   createLocation(name: string, description: string, worldId: string) {
     const url = `http://localhost:8080/build/createLocation`;
     const body = new HttpParams()
