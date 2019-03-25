@@ -1,11 +1,13 @@
 div h1 {
     text-align: center;
+    color: white;
 }
 
 div form {
+    
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 30%;
 }
 
@@ -13,6 +15,7 @@ form div input[type=text], input[type=password] {
     display: block;
     margin-bottom: 30px;
     padding: 5px;
+   
 }
 
 form div input[type=submit] {
@@ -20,7 +23,7 @@ form div input[type=submit] {
     border: none;
     width: 100px;
     height: 30px;
-    text-align: center;
+    
     background-color: black;
     color: white;
     cursor: pointer;
@@ -28,15 +31,19 @@ form div input[type=submit] {
 }
 
 form div {
+   
     padding: 10px;
     overflow: hidden;
 }
 
 form {
-    background-color: lightblue;
+   
+    color:white;
+    background-color:#434344;
 }
 
 label {
+    
     line-height: 40px;
     font-weight: bold;
     font-size: 20px;

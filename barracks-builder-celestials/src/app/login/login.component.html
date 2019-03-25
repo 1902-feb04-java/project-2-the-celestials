@@ -1,11 +1,17 @@
 <div>
-  <h1>Login</h1>
+  
+  <br>
+  <br>
+  <br>
   <form #userForm="ngForm" method="GET" (ngSubmit)="isValidUser(userForm);">
+   <h1>Login</h1>
+   <br>
+ 
     <label for="username">Username</label>
-    <input ngRequired="true" type="text" name="username" id="username" ngModel>
+    <input ngRequired="true" type="text" name="username" id="username" placeholder="username" ngModel>
     <label for="password">Password</label>
-    <input ngRequired="true" type="password" required name="password" id="password" ngModel>
-    <input type="submit">
+    <input ngRequired="true" type="password" required name="password" id="password" placeholder="password" ngModel>
+    <input type="submit" class="btn btn-outline-light" value="SUBMIT" ngModel>
   </form>
   <div *ngIf="submitted">
     <div *ngIf="user; else notValid">
