@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'location', component: LocationComponent},
   { path: 'worldtable', component: WorldsTableComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'userprofile', component: ProfileComponent},
   { path: 'home', component: HomeComponent},
   { path: '', component: HomeComponent},
   
