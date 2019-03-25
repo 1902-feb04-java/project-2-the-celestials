@@ -1,0 +1,18 @@
+<span *ngIf=location>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <h1>
+        {{location.name}}
+      </h1>
+      <em>"{{location.descriptor}}"</em>
+      <br>
+      <br>
+      <h6>Tags:</h6>
+      <span id="header_tags" *ngFor="let tag of location.tags">
+        <i class="fas fa-tag"></i> {{tag.name}}
+      </span>
+      <span *ngIf="userId == location.world.user.id">
+        <i class="fas fa-plus-circle clickable" (click)=(newTag())> New Tag </i>
+      </span>
+    </div>
+  </div>

@@ -21,11 +21,22 @@ export class WeaponComponent implements OnInit {
     
     this.getWeapon();
   }
+
   getWeapon(): void {
     // const id = +this.route.snapshot.paramMap.get('id');
     // const id = 1;
     this.httpService.getWeapons()
      .subscribe(weapons => this.weapons = weapons);
+  }
+
+  goToWeapon(name: string): void {
+    let weaponId;
+    this.weapons.forEach(element => {
+      if (element.name === name) {
+        weaponId = element.id;
+      }
+    });
+    window.location.href = "/weapon/" + weaponId;
   }
 
 }
