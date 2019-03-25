@@ -104,6 +104,20 @@ export class HttpService {
         catchError(this.handleError<Location[]>('getLocations', []))
       );
   }
+  getRanges(): Observable<Range[]> {
+    return this.httpClient.get<Range[]>(this.baseUrl + '/ranges')
+      .pipe(
+        tap(_ => this.log('fetched ranges')),
+        catchError(this.handleError<Range[]>('getRanges', []))
+      )
+  }
+  getBodySlots(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.baseUrl + "/bodyslots")
+    .pipe(
+      tap(_ => this.log('fetched bodyslots')),
+      catchError(this.handleError<any[]>('getBodySlots', []))
+    )
+  }
   getWorldFactionsById(id: number): Observable<Faction[]> {
     const url = `http://localhost:8080/build/worldFactions/${id}`;
     return this.httpClient.get<Faction[]>(url).pipe(
@@ -164,11 +178,11 @@ export class HttpService {
       }).subscribe();
   }
 
-  createTagForLocation(name: string, factionId: string) {
+  createTagForFaction(name: string, factionId: string) {
     const url = `http://localhost:8080/build/addTagToFaction`;
     const body = new HttpParams()
     .set('name', name)
-    .set('world_id', factionId);
+    .set('faction_id', factionId);
 
     this.httpClient.post(url,
       body.toString(),
@@ -200,6 +214,38 @@ export class HttpService {
     .set('descriptor', description)
     .set('population', population)
     .set('world_id', worldId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createWeapon(name: string, description: string, rangeId: string, factionId: string) {
+    const url = `http://localhost:8080/build/createWeapon`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('range_id', rangeId)
+    .set('faction_id', factionId);
+
+    this.httpClient.post(url,
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+      }).subscribe();
+  }
+
+  createDefense(name: string, description: string, bodyslotId: string, factionId: string) {
+    const url = `http://localhost:8080/build/createDefense`;
+    const body = new HttpParams()
+    .set('name', name)
+    .set('descriptor', description)
+    .set('bodyslot_id', bodyslotId)
+    .set('faction_id', factionId);
 
     this.httpClient.post(url,
       body.toString(),

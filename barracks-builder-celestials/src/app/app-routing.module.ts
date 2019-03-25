@@ -14,6 +14,9 @@ import { CreateLocationComponent } from './create-location/create-location.compo
 import { CreateFactionComponent } from './create-faction/create-faction.component';
 import { CreateTagComponent } from './create-tag/create-tag.component';
 import { UserFactionComponent } from './user-faction/user-faction.component';
+import { CreateTagFactionComponent } from './create-tag-faction/create-tag-faction.component';
+import { CreateWeaponComponent } from './create-weapon/create-weapon.component';
+import { CreateDefenseComponent } from './create-defense/create-defense.component';
 import { UserWeaponComponent } from './user-weapon/user-weapon.component';
 import { UserDefenseComponent } from './user-defense/user-defense.component';
 
@@ -39,7 +42,10 @@ const routes: Routes = [
   { path: 'createworld', component: CreateWorldComponent},
   { path: 'createlocation', component: CreateLocationComponent},
   { path: 'createfaction', component: CreateFactionComponent},
-  { path: 'createtag', component: CreateTagComponent}
+  { path: 'createweapon', component: CreateWeaponComponent},
+  { path: 'createdefense', component: CreateDefenseComponent},
+  { path: 'createtag', component: CreateTagComponent},
+  { path: 'createtagforfaction', component: CreateTagFactionComponent}
 
 ];
 

@@ -26,12 +26,33 @@ export class UserFactionComponent implements OnInit {
     this.getFaction();
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
   getFaction(): void {
     this.userId = parseInt(localStorage.getItem("user_id"));
     this.httpService.getFactionById(this.id)
      .subscribe(faction => this.faction = faction);
   }
 
+  newTag() {
+    let url = '/createtagforfaction';
+    url = url + "?factionId=" + this.id; 
+    window.location.href = url;
+  }
+
+  newWeapon() {
+    let url = '/createweapon';
+    url = url + "?factionId=" + this.id;
+    window.location.href = url;
+  }
+
+  newDefense() {
+    let url = '/createdefense';
+    url = url + "?factionId=" + this.id;
+    window.location.href = url;
+}
   goToWeapon(name: string): void {
     let weaponId;
     this.faction.weapons.forEach(element => {
