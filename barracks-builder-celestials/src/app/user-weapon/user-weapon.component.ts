@@ -30,6 +30,10 @@ export class UserWeaponComponent implements OnInit {
     this.getWeapon();
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
   getWeapon(): void {
     this.userId = parseInt(localStorage.getItem("user_id"));
     this.httpService.getWeaponById(this.id)
@@ -37,6 +41,8 @@ export class UserWeaponComponent implements OnInit {
   }
 
   newTag(): void {
-    alert("add tag here");
+    let url = 'createtagforweapon';
+    url = url + "?weaponId=" + this.id;
+    window.location.href = url;
   }
 }
