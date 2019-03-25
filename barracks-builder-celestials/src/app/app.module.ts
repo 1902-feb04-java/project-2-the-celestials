@@ -29,6 +29,7 @@ import { UserWeaponComponent } from './user-weapon/user-weapon.component';
 import { UserDefenseComponent } from './user-defense/user-defense.component';
 import { CreateTagWeaponComponent } from './create-tag-weapon/create-tag-weapon.component';
 import { CreateTagDefenseComponent } from './create-tag-defense/create-tag-defense.component';
+import { UserLocationComponent } from './user-location/user-location.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CreateTagDefenseComponent } from './create-tag-defense/create-tag-defen
     UserWeaponComponent,
     UserDefenseComponent,
     CreateTagWeaponComponent,
-    CreateTagDefenseComponent
+    CreateTagDefenseComponent,
+    UserLocationComponent
 
   ],
   imports: [

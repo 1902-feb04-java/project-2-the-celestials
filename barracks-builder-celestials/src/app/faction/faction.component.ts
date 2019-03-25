@@ -21,4 +21,13 @@ columnsToDisplay = ['name', 'description','worlds','population'];
     .subscribe(factions => this.factions = factions);
   }
 
+  goToFaction(name: string): void {
+    let factionId;
+    this.factions.forEach(element => {
+      if (element.name === name) {
+        factionId = element.id;
+      }
+    });
+    window.location.href = "/faction/" + factionId;
+  }
 }
