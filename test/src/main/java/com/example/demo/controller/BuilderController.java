@@ -191,27 +191,29 @@ public class BuilderController {
 	}
 
 	@PostMapping("/createWorld")
-	public void createWorld(@RequestParam String name, @RequestParam String descriptor, @RequestParam int user_id) {
+	public World createWorld(@RequestParam String name, @RequestParam String descriptor, @RequestParam int user_id) {
 		World world = new World();
 		User user = userRepo.findById(user_id).get();
 		world.setName(name);
 		world.setDescriptor(descriptor);
 		world.setUser(user);
 		worldRepo.save(world);
+		return world;
 	}
 
 	@PostMapping("/createLocation")
-	public void createLocation(@RequestParam String name, @RequestParam String descriptor, @RequestParam int world_id) {
+	public Location createLocation(@RequestParam String name, @RequestParam String descriptor, @RequestParam int world_id) {
 		Location location = new Location();
 		World world = worldRepo.findById(world_id).get();
 		location.setName(name);
 		location.setDescriptor(descriptor);
 		location.setWorld(world);
 		locationRepo.save(location);
+		return location;
 	}
 
 	@PostMapping("/createFaction")
-	public void createFaction(@RequestParam String name, @RequestParam String descriptor, @RequestParam int population,
+	public Faction createFaction(@RequestParam String name, @RequestParam String descriptor, @RequestParam int population,
 			@RequestParam int world_id) {
 		Faction faction = new Faction();
 		World world = worldRepo.findById(world_id).get();
@@ -220,10 +222,11 @@ public class BuilderController {
 		faction.setPopulation(population);
 		faction.setWorld(world);
 		factionRepo.save(faction);
+		return faction;
 	}
 
 	@PostMapping("/createWeapon")
-	public void createWeapon(@RequestParam String name, @RequestParam String descriptor, @RequestParam int range_id,
+	public Weapon createWeapon(@RequestParam String name, @RequestParam String descriptor, @RequestParam int range_id,
 			@RequestParam int faction_id) {
 		Weapon weapon = new Weapon();
 		Faction faction = factionRepo.findById(faction_id).get();
@@ -233,10 +236,11 @@ public class BuilderController {
 		weapon.setRange(range);
 		faction.addWeapon(weapon);
 		weaponRepo.save(weapon);
+		return weapon;
 	}
 
 	@PostMapping("/createDefense")
-	public void createDefense(@RequestParam String name, @RequestParam String descriptor, @RequestParam int bodyslot_id,
+	public Defense createDefense(@RequestParam String name, @RequestParam String descriptor, @RequestParam int bodyslot_id,
 			@RequestParam int faction_id) {
 		Defense defense = new Defense();
 		Faction faction = factionRepo.findById(faction_id).get();
@@ -246,10 +250,11 @@ public class BuilderController {
 		defense.setSlot(bodyslot);
 		faction.addDefense(defense);
 		defenseRepo.save(defense);
+		return defense;
 	}
 
 	@PostMapping("/addTagToWorld")
-	public void addTagToWorld(@RequestParam String name, @RequestParam int world_id) {
+	public World addTagToWorld(@RequestParam String name, @RequestParam int world_id) {
 		World world = worldRepo.findById(world_id).get();
 		Tag tag;
 		for (Tag t : tagRepo.findAll()) {
@@ -257,22 +262,23 @@ public class BuilderController {
 				List<Tag> tags = world.getTags();
 				for (Tag wt : tags) {
 					if (wt.getName().equals(name)) {
-						return;
+						return null;
 					}
 				}
 				world.addTag(t);
 				worldRepo.save(world);
-				return;
+				return null;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		world.addTag(tag);
 		tagRepo.save(tag);
+		return world;
 	}
 
 	@PostMapping("/addTagToDefense")
-	public void addTagToDefense(@RequestParam String name, @RequestParam int defense_id) {
+	public Defense addTagToDefense(@RequestParam String name, @RequestParam int defense_id) {
 		Defense defense = defenseRepo.findById(defense_id).get();
 		Tag tag;
 		for (Tag t : tagRepo.findAll()) {
@@ -280,22 +286,23 @@ public class BuilderController {
 				List<Tag> tags = defense.getTags();
 				for (Tag dt : tags) {
 					if (dt.getName().equals(name)) {
-						return;
+						return null;
 					}
 				}
 				defense.addTag(t);
 				defenseRepo.save(defense);
-				return;
+				return null;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		defense.addTag(tag);
 		tagRepo.save(tag);
+		return defense;
 	}
 
 	@PostMapping("/addTagToFaction")
-	public void addTagToFaction(@RequestParam String name, @RequestParam int faction_id) {
+	public Faction addTagToFaction(@RequestParam String name, @RequestParam int faction_id) {
 		Faction faction = factionRepo.findById(faction_id).get();
 		Tag tag;
 		for (Tag t : tagRepo.findAll()) {
@@ -303,22 +310,23 @@ public class BuilderController {
 				List<Tag> tags = faction.getTags();
 				for (Tag ft : tags) {
 					if (ft.getName().equals(name)) {
-						return;
+						return null;
 					}
 				}
 				faction.addTag(t);
 				factionRepo.save(faction);
-				return;
+				return null;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		faction.addTag(tag);
 		tagRepo.save(tag);
+		return faction;
 	}
 
 	@PostMapping("/addTagToLocation")
-	public void addTagToLocation(@RequestParam String name, @RequestParam int location_id) {
+	public Location addTagToLocation(@RequestParam String name, @RequestParam int location_id) {
 		Location location = locationRepo.findById(location_id).get();
 		Tag tag;
 		for (Tag t : tagRepo.findAll()) {
@@ -326,22 +334,23 @@ public class BuilderController {
 				List<Tag> tags = location.getTags();
 				for (Tag lt : tags) {
 					if (lt.getName().equals(name)) {
-						return;
+						return null;
 					}
 				}
 				location.addTag(t);
 				locationRepo.save(location);
-				return;
+				return null;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		location.addTag(tag);
 		tagRepo.save(tag);
+		return location;
 	}
 
 	@PostMapping("/addTagToWeapon")
-	public void addTagToWeapon(@RequestParam String name, @RequestParam int weapon_id) {
+	public Weapon addTagToWeapon(@RequestParam String name, @RequestParam int weapon_id) {
 		Weapon weapon = weaponRepo.findById(weapon_id).get();
 		Tag tag;
 		for (Tag t : tagRepo.findAll()) {
@@ -349,17 +358,18 @@ public class BuilderController {
 				List<Tag> tags = weapon.getTags();
 				for (Tag wt : tags) {
 					if (wt.getName().equals(name)) {
-						return;
+						return null;
 					}
 				}
 				weapon.addTag(t);
 				weaponRepo.save(weapon);
-				return;
+				return null;
 			}
 		}
 		tag = new Tag();
 		tag.setName(name);
 		weapon.addTag(tag);
 		tagRepo.save(tag);
+		return weapon;
 	}
 }

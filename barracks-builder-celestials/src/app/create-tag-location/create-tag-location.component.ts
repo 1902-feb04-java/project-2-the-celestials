@@ -15,11 +15,10 @@ export class CreateTagLocationComponent implements OnInit {
   constructor(private route : ActivatedRoute, private httpService: HttpService) { }
 
   ngOnInit() {
-    /*this.route.queryParams
+    this.route.queryParams
     .subscribe(params => {
       this.locationId = params.locationId;
-    });*/
-    this.locationId = "1";
+    });
   }
 
   createTag(form: NgForm) {
