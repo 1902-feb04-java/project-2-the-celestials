@@ -1,0 +1,20 @@
+<span *ngIf=defense>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <h1>
+        {{defense.name}}
+      </h1>
+      <em>"{{defense.descriptor}}"</em>
+      <br>
+      <span>Body Slot: {{defense.slot.name}}</span>
+      <br>
+      <br>
+      <h6>Tags:</h6>
+      <span id="header_tags" *ngFor="let tag of defense.tags">
+        <i class="fas fa-tag"></i> {{tag.name}}
+      </span>
+      <span *ngIf="userId == defenseUserId">
+        <i class="fas fa-plus-circle" (click)=(newTag())> New Tag </i>
+      </span>
+    </div>
+  </div>
