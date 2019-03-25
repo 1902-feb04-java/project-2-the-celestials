@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   setUserInSessionStorage(userId: string) {
     localStorage.setItem("user_id", userId);
-    window.location.href = "/profile";
+    window.location.href = "/userprofile";
   }
 
 }
